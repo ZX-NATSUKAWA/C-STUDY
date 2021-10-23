@@ -132,3 +132,31 @@ int main()
 	}
 	return 0;
 }
+int main()
+{
+	int day = 0;
+	scanf("%d", &day);
+	switch (day)
+	{
+		case 1:
+			if (1 == day)
+				printf("周末综合征\n");
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+			printf("工作日\n");
+			break;
+		case 6:
+		case 7:
+			printf("休息日\n");
+			break; //最后一句加上break防止后续加代码，case7执行时把后面的也执行了。
+		case 8:
+			break;
+		default:
+			printf("输入错误\n");
+			break;
+	}
+	return 0;
+}
+// 
