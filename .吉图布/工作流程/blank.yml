@@ -234,3 +234,22 @@ int main()
 	}
 	return 0;
 }
+int main()
+{
+	int ret = 0;
+	char password[20] = { 0 };
+	printf("请输入密码：>");
+	scanf("%s", password);  //输入缓冲区123456\n→输入函数123456
+	printf("请确认（Y/N):>");
+	getchar();
+	ret = getchar();
+	if (ret == 'Y')
+	{
+		printf("确认成功\n");
+	}
+	else
+	{
+		printf("放弃确认\n");
+	}
+	return 0;
+}
