@@ -266,3 +266,23 @@ int main()
 	}
 	return 0;
  }
+int main()                      //计算阶乘求和
+{
+	int i = 0;
+	int n = 0;
+	int ret = 1;
+	int sum = 0;
+	int k = 0;
+	scanf("%d", &k);
+	for (n = 1; n <= k; n++)
+	{
+		ret = 1;
+		for(i=1;i<=n;i++)
+		{
+			ret = ret * i;
+		}
+		sum = sum + ret;
+	}
+	printf("sum=%d\n", sum);
+	return 0;
+}
