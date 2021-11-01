@@ -484,3 +484,59 @@ int main()
 	}
 	return 0;
 }
+void menu()
+{
+	printf("猜数字\n");
+	printf("***  1.play  0.exit  ***\n");
+}
+void game()
+{
+	
+	int ret = 0;   
+	int guess = 0;
+	ret = rand()%100+1;   // 伪随机函数rand 生成0到7FFFH之间的一个任意整数。可以通过取模限定范围
+	//printf("%d\n", ret);
+	while (1)
+	{
+		printf("请猜数字：>");
+		scanf("%d", &guess);
+		if (guess > ret)
+		{
+			printf("猜大了\n");
+		}
+		else if (guess < ret)
+		{
+			printf("猜小了\n");
+		}
+		else
+		{
+			printf("猜对了\n");
+			break;
+		}
+	}
+}
+int main()
+{
+	int input = 0;
+	srand((unsigned int)time(NULL)); // 时间戳 当前时间和计算机起始时间（1970.01.01 00：00）的差值——一直在变化
+	do
+	{
+
+		menu();
+		printf("请选择>:");
+		scanf("%d", &input);
+		switch (input)
+		{
+		case 1:
+			game();
+			break;
+		case 0:
+			printf("退出游戏\n");
+			break;
+		default:
+			printf("选择错误\n");
+			break;
+		}
+	} while (input);
+	return 0;
+}
