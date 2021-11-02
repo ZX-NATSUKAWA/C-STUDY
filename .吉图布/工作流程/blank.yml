@@ -540,3 +540,58 @@ int main()
 	} while (input);
 	return 0;
 }
+函数
+  函数是什么：大型程序的部分代码，解决特定问题，相对独立。 分为库函数和自定义函数
+int Add(int x, int y)
+{
+	int z = 0;
+	z = x + y;
+	return z;
+}
+int main()
+{
+	int a = 20;
+	int b = 10;
+	int sum = Add(a, b);
+	printf("%d\n", sum);
+	return 0;
+}
+  库函数：现成函数，引用头文件就能使用
+具体有：IO函数、字符串操作函数、字符操作函数、内存操作函数、时间/日期函数、数学函数、其他库函数。
+int main()
+{
+	char arr1[] = "bit";
+	char arr2[20] = "#####";
+	strcpy(arr2, arr1);
+	printf("%s\n", arr2);
+	return 0;
+}
+int main()
+{
+	char arr[] = "hehe haha";
+	memset(arr, '*', 5);        //memset 内存设置
+	printf("%s\n", arr);
+	return 0;
+}
+
+  自定义函数：自己设计函数
+ret_type fun_name(para1, *)  //类型 函数名+格式
+{
+	statement; //语句项，交代函数如何实现
+}
+int get_max(int x, int y)
+{
+	int z = 0;
+    if (x > y)
+       return x;
+    else
+       return y;
+}
+int main()
+{
+	int a = 10;
+	int b = 20;
+	int max = get_max (a, b);
+	printf("max=%d\n", max);
+	return 0;
+}
