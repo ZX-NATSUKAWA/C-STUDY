@@ -613,3 +613,32 @@ int main()
 	printf("a=%d b=%d\n", a, b);
 	return 0;
 }
+  函数参数：形参、实参
+  函数调用:函数与函数间有机组合。
+  函数的嵌套调用和链式访问
+ 嵌套：函数里面套函数。
+  链式访问：将一个函数的返回值作为下一函数的参数
+int main()
+{
+	int len = 0;
+	len = strlen("abc");
+	printf("%d\n", len);
+	printf("%d\n", strlen("abc")); // 链式访问
+	return 0;
+}
+int main()
+{
+	printf("%d", printf("%d", printf("%d", 43))); //printf的返回值是打印在屏幕上字符的个数
+	return 0;
+}
+  函数的声明和定义
+ #include"函数.h"  //函数声明
+int main()
+{
+	int a = 10;
+	int b = 20;
+	int sum = 0;
+	sum = Add(a, b);
+	printf("%d\n", sum);
+	return 0;
+}
