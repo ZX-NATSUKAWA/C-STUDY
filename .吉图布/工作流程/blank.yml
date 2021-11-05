@@ -642,3 +642,26 @@ int main()
 	printf("%d\n", sum);
 	return 0;
 }
+  函数递归:程序调用自身的编程技巧。将一个大型复杂问题转化为一个与原问题相似的规模较小的问题来求解。
+  必要条件：存在限制条件，达到限制条件后停止递归。  每次递归越来越逼近限制条件。
+int main()
+{
+	printf("hrhr\n");
+	main();              // main函数套main函数
+	return 0;            //递归常见错误：栈溢出
+}
+void print(int n)
+{
+	if (n > 9)
+	{
+		print(n / 10);
+	}
+	printf("%d ", n % 10);
+}
+int main()
+{
+	unsigned int num = 0;
+	scanf("%d", &num);
+	print(num);
+	return 0;
+}
