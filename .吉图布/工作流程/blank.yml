@@ -697,3 +697,27 @@ int main()
 	printf("%d\n", len);
 	return 0;
 }
+递归与迭代
+int FAC1(int n)
+{
+	/*int i = 0;                //循环方式
+	int ret = 1;
+	for (i = 1; i <= n; i++)
+	{
+		ret *= i;
+	}
+	return ret;*/
+	if (n <= 1)                 //递归方式
+		return 1;
+	else
+		return n * FAC1(n - 1);
+}
+int main()  //求n的阶乘
+{
+	int n = 0;
+	int ret = 0;
+	scanf("%d", &n);
+	ret = FAC1(n);
+	printf("%d\n", ret);
+	return 0;
+}
