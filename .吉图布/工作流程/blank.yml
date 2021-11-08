@@ -878,3 +878,44 @@ int main()                             //数组名
 	printf("%p\n", &arr);                   //看似一样，实际是整个数组地址。加一后的地址是整个数组之后的地址
 	printf("%p\n", &arr+1);
 	retu
+//测试 三子棋 游戏
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include "game.h"
+
+void menu()
+{
+	printf("**** 1.play  0.exit ****\n");
+}
+void game()
+{
+	char board[ROW][COL] = {0};
+	InitBoard(board, ROW, COL);
+	DisplayBoard(board,ROW,COL);
+}
+void test()
+{
+	int input = 0;
+	do
+	{
+		menu();
+		printf("请选择：");
+		scanf("%d", &input);
+		switch (input)
+		{
+		case 1:
+			printf("三子棋\n");
+			break;
+		case 0:
+			printf("退出游戏\n");
+		default:
+			printf("选择错误，重新选择：");
+			break;
+		}
+	} while (input);
+}
+int main()
+{
+	test();
+	return 0;
+}
