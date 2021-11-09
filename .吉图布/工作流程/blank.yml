@@ -877,7 +877,33 @@ int main()                             //数组名
 	printf("%p\n", &arr[0]+1);
 	printf("%p\n", &arr);                   //看似一样，实际是整个数组地址。加一后的地址是整个数组之后的地址
 	printf("%p\n", &arr+1);
-	retu
+	return 0;
+#pragma once
+#define ROW 3
+#define COL 3
+
+void InitBoard(char board[ROW][COL], int row, int col);//函数声明
+void DisplayBoard(char board[ROW][COL], int row, int col);
+#include "game.h"
+#define _CRT_SECURE_NO_WARNINGS 1
+
+void InitBoard(char board[ROW][COL], int row, int col) 
+{
+	int i = 0;
+	int j = 0;
+	for (i = 0; i < row; i++)
+	{
+		for (j = 0; j < col; j++)
+		{
+			board[i][j] = ' ';
+		}
+	}
+}
+
+void DisplayBoard(char board[ROW][COL], int row, int col)
+{
+
+}
 //测试 三子棋 游戏
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
