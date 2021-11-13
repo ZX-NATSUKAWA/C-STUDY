@@ -1096,18 +1096,146 @@ void test()
 	} while (input);
 }
 
-int main()
-{
-	test();
-	return 0;
-}
-#define _CRT_SECURE_NO_WARNINGS 1
-#include<stdio.h>
 
+
+
+find· fish·
+#pragma once
+#include<stdio.h>
+#define ROW 9
+#define COL 9
+
+#define ROWS ROW+2
+#define COLS COL+2
+
+#define EASY_COUNT 10
+
+#include<stdlib.h>
+#include<time.h>
+
+void Initboard(char board[ROWS][COLS], int rows, int cols, char set);
+void DisplayBoard(char board[ROWS][COLS], int row,int col);
+void Setmine(char board[ROWS][COLS], int row, int col);
+void Findmine(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col);
+#define _CRT_SECURE_NO_WARNINGS 1
+#include "game.h"
+
+
+#define _CRT_SECURE_NO_WARNINGS 1
+#include "game.h"
+
+//初始化
+void Initboard(char board[ROWS][COLS], int rows, int cols, char set)
+{
+	int i = 0;
+	int j = 0;
+	for (i = 0; i < rows; i++)
+	{
+		for (j = 0; j < cols; j++)
+		{
+			board[i][j] = set;
+		}
+	}
+}
+
+//打印棋盘
+void DisplayBoard(char board[ROWS][COLS], int row, int col)
+{
+	int i = 0;
+	int j = 0;
+	for (i = 0; i <= col; i++) //打印列号
+	{
+		printf("%d ", i);
+	}
+	printf("\n");              //打印换行
+	for (i = 1; i <= col; i++) //打印分割线
+	{
+		printf("~~");
+	}
+	printf("\n");
+	for (i = 1; i <= row; i++)
+	{
+		printf("%d ", i);
+		printf("|");
+		for (j = 1; j <= col; j++)
+		{
+			printf("%c ", board[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+//放鱼(王老师）入塘
+void Setmine(char board[ROWS][COLS], int row, int col)
+{
+	int count = EASY_COUNT;
+	while (count)
+	{
+		int x = rand() % row + 1;
+		int y = rand() % col + 1;
+		if (board[x][y] == '0')
+		{
+			board[x][y] = '1';
+			count--;
+		}
+	}
+}
+
+int get_mine_count(char mine[ROWS][COLS], int x, int y)
+{
+	//''里面是ASCII码，有'1'-'0'=1.利用该方法把字符1转换为数字1.
+	return  mine[x - 1][y] +
+			mine[x - 1][y - 1] +
+			mine[x][y - 1] +
+			mine[x + 1][y - 1] +
+			mine[x + 1][y] +
+			mine[x + 1][y + 1] +
+			mine[x][y + 1] +
+			mine[x - 1][y + 1] - 8 * '0';
+}
+void Findmine(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col)
+{
+	int x = 0;
+	int y = 0;
+	int win = 0;
+	while (win<row*col - EASY_COUNT)
+	{
+		printf("请输入找鱼的坐标：（如1 1）");
+		scanf_s("%d%d", &x, &y);
+		if (x >= 1 && x <= 9 && y >= 1 && y <= 9)
+		{
+			//坐标合法
+			if (mine[x][y] == '1')                  //只掉到一条
+			{
+				printf("很遗憾，其他鱼被吓跑了\n");
+				DisplayBoard(mine, row, col);
+				break;
+			}
+			else                                    //统计周围几条鱼,继续钓
+			{
+				int count = get_mine_count(mine, x, y);
+				show[x][y] = count + '0';
+				DisplayBoard(show, row, col);
+				win++;
+			}
+		}
+		else
+		{
+			printf("输入坐标错误，请重新输入！\n");
+		}
+	}
+	if (win == row * col - EASY_COUNT)
+	{
+		printf("姜太公大获全胜！\n");
+	}
+}
 void menu()
 {
 	printf("      find fish     \n");
-	printf("找到🐟的位置并钓起它\n");
+	printf("找到鱼的位置并钓起它\n");
+	printf("你是贪婪的姜太公，想要一次性钓走整个鱼塘的鱼\n");
+	printf("拥有特殊技能的你，可以放下鱼竿并感知周围鱼的尾数\n");
+	printf("如果鱼竿直接钓到鱼会吓跑其他鱼\n");
 	printf("********************\n");
 	printf("*****   1.play    **\n");
 	printf("*****   0.exit    **\n");
@@ -1116,12 +1244,21 @@ void menu()
 
 void game()
 {
-	printf("🐟\n");
+	char mine[ROWS][COLS] = { 0 }; //11*11
+	char show[ROWS][COLS] = { 0 };
+	Initboard(mine, ROWS, COLS,'0');
+	Initboard(show, ROWS, COLS,'*');
+	DisplayBoard(show, ROW, COL);
+	Setmine(mine, ROW, COL);
+	//DisplayBoard(mine, ROW, COL);
+	Findmine(mine, show, ROW, COL);
+	printf("\n");
 }
 
 void test()
 {
 	int input = 0;
+	srand((unsigned)time(NULL));
 	do
 	{
 		menu();
