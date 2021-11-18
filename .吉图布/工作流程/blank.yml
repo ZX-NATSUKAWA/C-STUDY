@@ -1588,3 +1588,39 @@ int main()
 }
 
 算术转换：操作符的各操作数属于不同类型，将占空间小的类型转换成大的进行运算。
+操作符属性：优先级、结合性、是否控制求值顺序
+int main()
+{
+	int a = 10;
+	int b = 20;
+	int c = b + a + 3;  //加号从左向右计算
+	return 0;
+}
+逻辑与、逻辑或、逗号表达式、条件操作符会控制求值顺序！
+歧义表达式：c + --c 导致左操作数的获取在右操作数之后，结果无法确定
+非法表达式
+int main()
+{
+	int i = 10;
+	i = i-- - --i * (i = -3) * i++ + ++i; //不同编译器计算路径不同，结果不确定
+	printf("i=%d\n", i);
+	return 0;
+int fun()
+{
+	static int count = 1;
+	return ++count;
+}
+int main()
+{
+	int answer;
+	answer = fun() - fun() * fun(); //先调用哪个fun函数不确定，调用顺序不同fun值不同
+	printf("%d\n", answer);
+	return 0;
+}
+int main()
+{
+	int i = 1;
+	int a = (++i) + (++i) + (++i);
+	printf("a = %d\n", a);
+	return 0;
+}
