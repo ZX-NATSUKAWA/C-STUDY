@@ -2011,3 +2011,85 @@ int main()
 	print(n);
 	return 0;
 }
+递归实现字符串逆序(不能使用库函数）
+int my_strlen(char* str)  //替代库函数strlen
+{
+	int count = 0;
+	while (*str != '\0')
+	{
+		count++;
+		str++;
+	}
+	return count;
+}
+循环方式实现
+void reverse_string(char arr[])
+{
+	int left = 0;
+	int right = my_strlen(arr) - 1;  
+	while (left < right)
+	{
+		int tmp = arr[left];
+		arr[left] = arr[right];
+		arr[right] = tmp;
+		left++;
+		right--;
+	}
+}
+void reverse_string(char* arr)
+{
+	char tmp = arr[0];
+	int len = my_strlen(arr);  
+	arr[0] = arr[len - 1];
+	arr[len - 1] = '\0';
+	if (my_strlen(arr+1) >= 2)
+		reverse_string(arr + 1);
+	arr[len - 1] = tmp;
+}
+int main()
+{
+	char arr[] = "abcdef";
+	reverse_string(arr);
+	printf("%s\n", arr);
+	return 0;
+}
+
+计算一个数的每位之和（递归）
+int DigitSum(unsigned int num)
+{
+	if (num > 9)
+	{
+		return DigitSum(num/10) + num % 10;
+	}
+	else
+	{
+		return num;
+	}
+}
+int main()
+{
+	unsigned int num = 0;
+	scanf_s("%d", &num);
+	int ret = DigitSum(num);
+	printf("ret = %d\n", ret);
+	return 0;
+}
+
+计算n^k的值
+double Pow(int n,int k)
+{
+	if (k < 0)
+		return (1 / (Pow(n, -k)));
+	else if (k == 0)
+		return 1;
+	else
+		return n * Pow(n, k - 1);
+}
+int main()
+{
+	int n = 0;
+	int k = 0;
+	scanf_s("%d%d", &n, &k);
+	double ret = Pow(n,k);
+	printf("ret = %lf\n", ret);
+}
