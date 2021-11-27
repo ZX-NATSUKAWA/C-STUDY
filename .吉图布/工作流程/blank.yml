@@ -2399,3 +2399,126 @@ int main()
 	}
 	return 0;
 }
+浮点型在内存的存储
+int main()
+{
+	int n = 9; //0000000 000000000 00000000 00001001
+	float* pFloat = (float*)&n;
+	printf("n的值：%d\n", n);
+	printf("*pFloat的值：%f\n", *pFloat); //0 00000000 000000000001001 e=00000000 所以（-1）^0*0.000000000001001*2^-126
+	*pFloat = 9.0; //1001.0  =(-1)^S*M*2^E = (-1)^1.001*2^3   0 10000010 00100000000000000000000
+ //内存中：SEM 1+8+23（32bit)  1+11+52(64bit)
+	printf("n的值：%d\n", n);  //01000001 00010000 00000000 00000000
+	printf("*pFloat的值：%f\n", *pFloat);
+	return 0;
+}
+int main()
+{
+	float f = 5.5; //101.1 = (-1)^0*2^2     s=0,m=1.011,e=2  0 10000001 01100000000000000000000=0x40b00000=00 00 b0 40
+	return 0;
+}
+
+指针详解
+void test(int arr[]) //首元素地址传过去了
+{
+	int xz = sizeof(arr) / sizeof(arr[0]);
+	printf("%d\n", xz);  //2  指针大小/单个元素大小 8/4
+
+}
+int main()
+{
+	int arr[10] = { 0 };
+	test(arr);
+	return 0;
+}
+int main()
+{
+	char ch = 'w';
+	char* pc = &ch;
+	return 0;
+}
+int main()
+{
+	char arr[] = "abcdef";
+	char* pc = arr;
+	printf("%s\n", arr);
+	printf("%s\n", pc);
+	return 0;
+}
+int main()
+{
+	const char* p = "abcdef"; //"abcdef"是个常量字符串，将a的地址赋给p
+	//printf("%c\n", p);
+	//printf("%s\n", p);
+	//*p = 'w'; // error *p是常量，不能修改
+	//printf("%s\n", p);
+	return 0;
+}
+
+字符指针
+ int main()
+{
+char arr1[] = "abcdef";
+char arr2[] = "abcdef";
+const char* p1 = "abcdef"; //为了节省空间，无法修改的"abcdef"在内存中只有一个。所以p1，p2都指向同一地址
+const char* p2 = "abcdef";
+if (arr1 == arr2)
+{
+	printf("hehe\n");
+}
+else
+{
+	printf("haha\n");
+}
+if (p1 == p2)
+{
+	printf("hehe\n");
+}
+else
+{
+	printf("haha\n");
+}
+return 0;
+}
+ 
+ 数组指针 是数组
+int main()
+{
+	int arr[10] = { 0 }; //整型数组
+	char ch[5] = { 0 };  //字符数组
+	int* parr[4]; //存放整型指针的数组
+	char* pch[5]; //存放字符指针的数组
+	return 0;
+}
+int main()
+{
+	int a = 10;
+	int b = 20;
+	int c = 30;
+	int d = 40;
+	int* arr[4] = { &a,&b,&c,&d };
+	int i = 0;
+	for (i = 0; i < 4; i++)
+	{
+		printf("%d", *(arr[i]));
+	}
+	return 0;
+}
+int main()
+{
+	int arr1[] = { 1,2,3,4,5 };
+	int arr2[] = { 2,3,4,5,6 };
+	int arr3[] = { 3,4,5,6,7 };
+	int* parr[3] = { arr1,arr2,arr3 };
+	int i = 0;
+	for (i = 0; i < 3; i++)
+	{
+		int j = 0;
+		for (j = 0; j < 5; j++)
+		{
+			printf("%d ", *(parr[i] + j));
+		}
+		printf("\n");
+	}
+	return 0;
+}
