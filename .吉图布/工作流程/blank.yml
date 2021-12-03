@@ -3017,3 +3017,184 @@ int main()
 	//BubbleSort(arr, sz);
 	return 0;
 }
+指针和数组面试题解析
+int main()
+{
+	//int a[] = { 1,2,3,4 };
+	//printf("%d\n", sizeof(a));      //16   数组
+	//printf("%d\n", sizeof(a+0));	//4/8  此处a表示首元素地址，+0还是首元素地址
+	//printf("%d\n", sizeof(*a));		//4    首元素
+	//printf("%d\n", sizeof(a+1));	//4/8  第二个元素地址
+	//printf("%d\n", sizeof(a[1]));	//4    第二个元素
+	//printf("%d\n", sizeof(&a));		//4/8  取出的是数组的地址，地址大小还是4
+	//printf("%d\n", sizeof(*&a));	//16   抵消，还是数组
+	//printf("%d\n", sizeof(&a+1));	//4/8  虽然跳过整个数组，但还是地址
+	//printf("%d\n", sizeof(&a[0]));	//4/8  第一个元素的地址
+	//printf("%d\n", sizeof(&a[0]+1));//4/8  第二个元素地址
+
+	//char arr[] = { 'a','b','c','d','e','f' };
+	//printf("%d\n", sizeof(arr));        //6  6*1bit
+	//printf("%d\n", sizeof(arr + 0));	//4/8 首元素地址
+	//printf("%d\n", sizeof(*arr));		//1   首元素地址解引用，计算首元素大小
+	//printf("%d\n", sizeof(arr[1]));	    //1   第二个元素
+	//printf("%d\n", sizeof(&arr));		//4/8
+	//printf("%d\n", sizeof(&arr + 1));	//4/8
+	//printf("%d\n", sizeof(&arr[0] + 1));//4/8
+
+	char arr[] = { 'a','b','c','d','e','f' };
+	printf("%d\n", strlen(arr));       //随机值 strlen计算字符串长度，找到\0才停止
+	printf("%d\n", strlen(arr+0));	   //随机值
+	printf("%d\n", strlen(*arr));	   //error 将'a'转换成ASCII码 97 访问0x00000097地址
+	printf("%d\n", strlen(arr[1]));    //error
+	printf("%d\n", strlen(&arr));      //随机值
+	printf("%d\n", strlen(&arr+1));    //随机值，与上一个随机值-6
+	printf("%d\n", strlen(&arr[0]+1)); //随机值，与上一个随机值+5
+	return 0;
+}
+
+int main()
+{
+	char arr[] = "abcdef";
+	printf("%d\n", sizeof(arr));       //7   a b c d e f \0
+	printf("%d\n", sizeof(arr+0));	   //4/8 首元素地址大小
+	printf("%d\n", sizeof(*arr));	   //1   首元素大小
+	printf("%d\n", sizeof(arr[1]));	   //1   第二元素大小
+	printf("%d\n", sizeof(&arr));	   //4/8 数组地址大小
+	printf("%d\n", sizeof(&arr+1));	   //4/8 跳过整个数组后的地址
+	printf("%d\n", sizeof(&arr[0]+1)); //4/8 第二个元素地址
+
+	printf("%d\n", strlen(arr));       //6   a b c d e f
+	printf("%d\n", strlen(arr+0));	   //6   从首元素开始往后算，一共6个
+	printf("%d\n", strlen(*arr));	   //error
+	printf("%d\n", strlen(arr[1]));	   //error  把第二个字符的ASCII值当作地址，依然非法访问
+	printf("%d\n", strlen(&arr));	   //6      数组起始地址往后计算字符长度
+	printf("%d\n", strlen(&arr+1));	   //随机值 跳过整个数组后的地址
+	printf("%d\n", strlen(&arr[0]+1)); //5      第二个元素地址开始往后计算              
+
+	const char* p = "abcdef";
+	printf("%d\n", sizeof(p));          //4/8  指针变量大小
+	printf("%d\n", sizeof(p + 1));      //4/8  第二个字符的地址
+	printf("%d\n", sizeof(*p));         //1    首字符大小
+	printf("%d\n", sizeof(p[0]));       //1    p[0] == *(p+0) =='a'
+	printf("%d\n", sizeof(&p));         //4/8  取地址，计算地址大小
+	printf("%d\n", sizeof(&p + 1));     //4/8  还是地址
+	printf("%d\n", sizeof(&p[0] + 1));  //4/8  取b的地址
+	 
+	printf("%d\n", strlen(p));          //6
+	printf("%d\n", strlen(p + 1));      //5
+	printf("%d\n", strlen(*p));         //error
+	printf("%d\n", strlen(p[0]));       //error
+	printf("%d\n", strlen(&p));         //6
+	printf("%d\n", strlen(&p + 1));     //随机值
+	printf("%d\n", strlen(&p[0] + 1));  //5
+	return 0;
+}
+
+二维数组
+int main()
+{
+	int a[3][4] = { 0 };
+	printf("%d\n", sizeof(a));           //48   3*4*4
+	printf("%d\n", sizeof(a[0][0]));     //4    首行首元素
+	printf("%d\n", sizeof(a[0]));        //16   4*4 a[0]单独放入sizeof作为一维数组，计算第一行大小
+	printf("%d\n", sizeof(a[0]+1));      //4/8  a[0]+1作为第一行第二个元素的地址。a[0]是第一行的数组名，放在表达式是代表首元素地址
+	printf("%d\n", sizeof(*(a[0]+1)));   //4    第一行第二个元素的大小
+	printf("%d\n", sizeof(a+1));         //4/8  第二行数组的地址，计算的是地址大小
+	printf("%d\n", sizeof(*(a+1)));      //16   第二行数组的大小
+	printf("%d\n", sizeof(&a[0]+1));     //4    第二行的地址
+	printf("%d\n", sizeof(*(&a[0]+1)));  //16   计算第二行大小
+	printf("%d\n", sizeof(*a));          //16   计算第一行大小
+	printf("%d\n", sizeof(a[3]));        //16   计算第四行大小。 sizeof不访问数组内容，只计算数组大小
+}
+
+ test1
+int main()
+{
+	int a[5] = { 1,2,3,4,5 };
+	int* ptr = (int*)(&a + 1);
+	printf("%d,%d\n", *(a + 1), *(ptr - 1)); // 2,5
+	return 0;
+}
+
+ test2
+假设p的值为0x100000,如下表达式的值分别为多少？
+已知结构体类型变量大小是20个字节。
+struct Test
+{
+	int Num;
+	char* pcName;
+	short sDate;
+	char cha[2];
+	short sBa[4];
+}*p;
+int main()
+{
+	p = (struct Test*) 0x100000;
+	printf("%p\n", p + 0x1);                //0x100014 跳过一个结构体20个字节，十六进制就是14
+	printf("%p\n", (unsigned long)p + 0x1); //0x100001 整数+1
+	printf("%p\n", (unsigned int*)p + 0x1); //0x100004 地址+1
+	return 0;
+}
+
+test3
+int main()
+{
+	int a[4] = { 1,2,3,4 };
+	int* ptr1 = (int*)(&a + 1);       //数组地址+1，再强行转换成整型地址
+	int* ptr2 = (int*)((int)a + 1);   //首元素地址强行转换成整数，+4bit后强行转换成整型地址
+	printf("%x,%x", ptr1[-1], *ptr2); //ptr1[1] == *(ptr1+(-1)) , 小端存储后移一位再还原回去 
+	return 0;
+}
+
+test4
+int main()
+{
+	int a[3][2] = { (0,1),(2,3),(4,5) }; //(,)逗号表达式，数组里实际是{1,3,5}
+	int* p;
+	p = a[0];
+	printf("%d", p[0]);
+	return 0;
+}
+
+test5
+int main()
+{
+	int a[5][5]; //二维数组
+	int(*p)[4];  //数组指针，指向四个整型元素的数组
+	p = (int(*)[4])a; //将a强制转换为p的类型
+	printf("%p,%d\n", &p[4][2] - &a[4][2], &p[4][2] - &a[4][2]);
+	return 0;
+}
+
+test6
+int main()
+{
+	int aa[2][5] = { 1,2,3,4,5,6,7,8,9,10 };
+	int* ptr1 = (int*)(&aa + 1);
+	int* ptr2 = (int*)(*(aa + 1));
+	printf("%d,%d\n", *(ptr1 - 1), *(ptr2 - 1)); //
+	return 0;
+}
+
+test7
+int main()
+{
+	const char* a[] = { "work","at","alibaba" }; // {char* w,char*a,char*a}
+	const char** pa = a;                         // char*(*pa) = char*a (char*w)
+	pa++;                                        //指向char*a
+	printf("%s\n", *pa); //at                    
+	return 0;
+}
+
+test8
+int main()
+{
+	const char* c[] = { "ENTER", "NEW", "POINT", "FIRST" };  // {char*E,char*N,char*P,char*F}
+	const char** cp[] = { c + 3,c + 2,c + 1,c };             // {char*F,char*P,char*N,char*E}
+	const char*** cpp = cp;                                  // char*(**cpp) = char** cp的首元素 （char*F)
+	printf("%s\n", **++cpp);       // 同优先级，右到左。 **（++cpp)  point  注意：++会保留计算结果
+	printf("%s\n", *--*++cpp+3);   // *(--(*(++cpp))) +3  从c+1开始 ++ 到c+2指向NEW --z指向 ENTER +3到ER
+	printf("%s\n", *cpp[-2]+3);    // 从c+2开始 -2指向FIRST +3到ST
+	printf("%s\n", cpp[-1][-1]+1); // 从c+2开始  *(*（cpp-1)-1) = NEW   +1到EW 
+	return 0;
+}
