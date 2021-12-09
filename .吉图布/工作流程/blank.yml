@@ -3637,3 +3637,136 @@ int main()
 	}
 	return 0;
 }
+ 字符串函数的使用和剖析
+ 前言： c语言对字符和字符串函数的处理很频繁，但没有字符串类型。通常是放在 常量字符串或字符数组 中。 字符串常量适合对它不做修改的字符串函数
+
+求字符串长度
+int my_strlen(const char* str)
+{
+	assert(str != NULL);
+	int count = 0;
+	while (*str != '\0')
+	{
+		count++;
+		str++;
+	}
+	return count;
+}
+// 如何不创建临时变量来实现my_strlen? 递归写法
+int main()
+{
+	int len = strlen("abcdef");
+	char arr[] = { 'a', 'b', 'c', 'd', 'e', 'f' }; // 缺少\0
+	int len1 = my_strlen(arr);
+	printf("%d\n", len);
+	printf("%d\n", len1);
+	if (strlen("abc") - strlen("abcdef") > 0)
+	{
+		printf("hehe\n"); // strlen的返回类型是size_t，而不是int。 size_t本质就是unsigned int。
+	}
+	else
+	{
+		printf("haha\n");
+	}
+	return 0;
+}
+
+长度不受限制的字符串函数
+ strcpy
+char* my_strcpy(char* dest, char* src)
+{
+	assert(dest != NULL);
+	assert(src != NULL);
+	char* ret = dest; //拷贝目标空间的起始地址
+	while (*dest++ = *src++) // 拷贝src指向的字符串到dest指向的空间，包含'\0'
+	{
+		;
+	}
+	return ret; //返回起始地址
+}
+int main()
+{
+	char arr1[] = "abcdefghi";
+	char arr2[] = "bit";
+	//strcpy(arr1, arr2); // strcpy(目标数组，源数组)
+	my_strcpy(arr1, arr2);
+	printf("%s\n", arr1);
+	return 0;
+}
+ strcat
+char* my_strcat(char* dest,const char* src)
+{
+	assert(dest != NULL);
+	assert(src != NULL);
+	char* ret = dest;
+	while (*dest != '\0')
+	{
+		dest++;
+	}
+	while (*dest++ = *src++)
+	{
+		;
+	}
+	return ret;
+}
+int main()
+{
+	//char arr1[] = "hello"; //空间不够放bit
+	char arr1[30] = "hello\0xxxx"; //arr2从\0开始往后追加
+	char arr2[] = "bit";
+	strcat_s(arr1, arr2); // 将arr2的内容追加到arr1的后面
+	printf("%s\n", arr1);
+	return 0;
+}
+ strcmp
+int main()
+{
+	const char* p1 = "abcdef";
+	const char* p2 = "sqwer";
+	int ret = strcmp(p1, p2); //从首字符开始比较对应字符的ASCII码大小 ，相等时输出0
+	if (ret > 0)
+	{
+		printf("p1>p2\n");
+	}
+	else if (ret == 0)
+	{
+		printf("p1=p2\n");
+	}
+	else
+	{
+		printf("p1<p2\n");
+	}
+	printf("%d\n", ret);
+	return 0;
+}
+int my_strcmp(const char* str1, const char* str2)
+{
+	assert(str1 && str2 != NULL);
+	while (*str1 == *str2)
+	{
+		if (*str1 == '\0') //比较到字符串结尾了，说明字符串相等
+		{
+			return 0;
+		}
+		str1++;
+		str2++;
+	}
+	if (*str1 > *str2)
+	{
+		return 1;
+	}
+	else
+	{
+		return -1;
+	}
+	// return (*str1 - *str2）;
+}
+int main()
+{
+	const char* p1 = "abcdef";
+	const char* p2 = "abqwe";
+	int ret = my_strcmp(p1, p2);
+	printf("%d\n", ret);
+	return 0;
+}
+ 容易变得不安全(越界、目标空间放不下等问题）
