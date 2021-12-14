@@ -3937,3 +3937,91 @@ int main()
 	// void* 通用类型指针
 	return 0;
 }
+数据类型：内置类型，自定义类型
+自定义类型包括：结构体、枚举、联合体
+
+结构体：结构是一些值的集合，这些值成为成员变量。结构的每个成员可以是不同类型的变量。
+ 结构体的声明
+struct stu
+{
+	// 声明一个学生类型，是通过学生类型来创建学生对象/变量
+	// 描述学生属性
+	char name[20];
+	char tele[12];
+	char sex[10];
+	int age;
+}s4,s5,s6;// 全局结构体变量
+
+int main()
+{
+	struct stu s1; // 局部结构体变量
+	struct stu s2;
+	return 0;
+}
+struct      // 匿名创建（省略结构体标签）
+{
+	int a;
+	char c;
+}sa;       // 这边补一下
+
+struct
+{
+	int a;
+	char c;
+}*psa;    // 匿名结构体指针类型。 不能存放sa的地址
+int main()
+{
+	psa = &sa; // error
+	return 0;
+}
+
+ 结构体自引用
+ 数据结构：数据在内存中存储的结构
+struct node
+{
+	int data;
+	struct node* next; 
+	//struct node n; // 无限套
+};
+
+int main()
+{
+	sizeof(struct node);
+	return 0;
+}
+typedef struct node  // 不可以匿名
+{
+	int data;
+	struct node* next; 
+	//struct node n; // 无限套
+}node;
+
+int main()
+{
+	struct node n1;
+	node n2;
+	return 0;
+}
+
+ 结构体变量的定义和初始化
+struct t
+{
+	double weight;
+	int age;
+};
+struct s            // 声明同时定义
+{
+	char c;
+	int a;
+	double d;
+	char arr[20];
+	struct t st;
+};
+int main()
+{
+	//struct s s = { 'c',100,3.14,"hello bit" }; // 初始化
+	//printf("%c %d %lf %s\n", s.c, s.a, s.d, s.arr);
+	struct s s = { 'c',100,3.14,"hello bit",{55.6,30} };
+	printf("%lf\n", s.st.weight);
+	return 0;
+}
