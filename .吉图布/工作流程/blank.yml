@@ -4082,3 +4082,84 @@ int main()
 	printf("%d\n", offsetof(struct s, d));
 	return 0;
 }
+ 结构体实现位段（位段的填充、可移植性）
+ 位段的声明和结构体类似，两个不同：位段成员必须是：int，unsigned int或signed int（int型就行）;位段成员名后边有一个冒号和一个数字。
+struct S      // 为了节省空间
+{
+	int a: 2; //2bit表达4种状态
+	int b: 5;
+	int c: 10;
+	int d: 30; // 按整型开辟空间。不能大于32，一个最多32bit对应数字32。
+};
+int main()
+{
+	struct S s;
+	printf("%d\n", sizeof(s));  // 8bit
+	return 0;
+}
+struct S
+{
+	char a : 3;
+	char b : 4;
+	char c : 5;
+	char d : 4;
+};
+int main()
+{
+	struct S s = { 0 };
+	printf("%d\n", sizeof(s));
+	s.a = 10;
+	s.b = 20;
+	s.c = 3;
+	s.d = 4;
+	printf("%d\n", sizeof(s));
+	return 0;
+}
+ 位段跨平台问题：
+int 位段被当成有符号数还是无符号数；
+位段最大位数目不定（16位机最多16）；
+从左还是从右分配；
+一个结构包含两个位段，一个比较大是丢弃剩下bit还是利用不确定
+
+枚举
+ 枚举类型的定义
+#define RED 0
+#define GREEN 1
+#define  BLUE 2
+enum Sex
+{
+	MALE = 2,
+	FEMAL,
+	SECRET
+};
+//enum Color
+//{
+//	RED,
+//	GREEN,
+//	BLUE
+//};
+int main()
+{
+	//const int num = 100; //赋初值
+	//enum Sex s = MALE;
+	//enum Color c = 2; // error
+	//printf("%d %d %d\n", RED, GREEN, BLUE); // 0 1 2
+	//printf("%d %d %d\n", MALE, FEMAL, SECRET); // 0 1 2 依次往后赋值
+	return 0;
+}
+
+ 枚举的优点：比定义更容易理解，可维护，有类型更严谨，定义便捷，防止命名污染，便于调试
+
+ 枚举的使用
+enum color
+{
+	RED=1,
+	GREEN=2,
+	BLUE=4
+};
+int main()
+{
+	enum color clr = GREEN; // 只能拿枚举常量给枚举变量赋值，否则会出现类型差异
+	clr = 5; // error
+	return 0;
+}
