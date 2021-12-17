@@ -4163,3 +4163,32 @@ int main()
 	clr = 5; // error
 	return 0;
 }
+enum Sex
+{
+	male,
+    female,
+	secret
+};
+int main()
+{
+	enum Sex s = male;
+	printf("%d\n", sizeof(s));
+	return 0;
+}
+联合-联合体-共用体
+ 联合类型的定义
+ 包含一系列成员，共用空间
+union Un  // 联合体变量大小，至少是最大成员的大小。
+{
+	char c;
+	int i;
+};
+int main()
+{
+	union Un u;
+	printf("%d\n", sizeof(u)); // 4
+	printf("%p\n", &(u.c));
+	printf("%p\n", &(u.i));
+	printf("%p\n", &u);
+	return 0;
+}
