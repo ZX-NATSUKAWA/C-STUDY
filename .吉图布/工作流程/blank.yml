@@ -4311,3 +4311,33 @@ void SearchContact(struct Contact* ps)
 				ps->data[pos].addr);
 	}
 }
+// 动态内存分配
+// 创建变量  栈区：局部变量、函数形式参数。  堆区：动态内存分配。  静态区：全局变量、静态变量
+// 创建数组  栈区：局部数组。                                      静态区：全局数组。
+//struct S
+//{
+//	char name[20];
+//	int age;
+//};
+//int main()
+//{
+//	struct S arr[50]; // 50个struct S类型的数据
+//	return 0; // 存在空间浪费
+//}
+
+// 存在意义：需要多少空间，开辟多少空间
+
+// 动态内存函数介绍
+int main()
+{
+	int*p = (int*)malloc(10 * sizeof(int)); // malloc 返回类型是void 需要强制转换. 
+	if (p == NULL) //返回NULL，表示内存空间不够。
+	{
+		printf("%s\n", strerror(errno)); // 打印错误原因
+	}
+	else
+	{
+
+	}
+	return 0;
+}
