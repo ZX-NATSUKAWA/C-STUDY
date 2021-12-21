@@ -4366,3 +4366,176 @@ int main()
 	p = NULL;
 	return 0; 
 }
+ realloc
+int main()
+{
+	int* p = (int*)malloc(20);
+	if (p == NULL)
+	{
+		printf("%s\n", strerror(errno));
+	}
+	else
+	{
+		int i = 0;
+		for (i = 0; i < 5; i++)
+		{
+			*(p + i) = i;
+		}
+	} // 开辟了20个字节空间，现在需要40个，增加空间。
+	int* ptr = (int*)realloc(p, 40); // realloc 扩大空间，p是目标空间的地址，40是新空间的大小。
+	// p 后空间足够，在后面加上空间； p后空间不足，开辟足够的新空间，将原来内容拷贝过来，释放就空间，返回新空间地址。
+	if (ptr != NULL) // 开辟成功把ptr赋给p，防止开辟失败直接把p变成空指针从而丢失原先开辟的空间。
+	{
+		p = ptr;
+		int i = 0;
+		for (i = 0; i < 5; i++)
+		{
+			*(p + i) = i;
+		}
+		for (i = 0; i < 10; i++)
+		{
+			printf("%d ", *(p + i));
+		}
+	}
+	free(p);
+	p = NULL;
+	return 0;
+}
+
+
+ 常见动态内存错误
+1 对空指针解引用
+int main()
+{
+	int* p = (int*)malloc(40); // 如果malloc失败，p变赋值为空指针，违法操作。
+	*p = 0;
+	return 0;
+}
+ 2 对动态开辟空间的越界访问
+int main()
+{
+	int* p = (int*)malloc(5 * sizeof(int));
+	if (p == NULL)
+	{
+		return 0;
+	}
+	else
+	{
+		int i = 0;
+		for (i = 0; i < 10; i++) // 越界访问
+		{
+			*(p + i) = i;
+		}
+	}
+	free(p);
+	p = NULL;
+	return 0;
+}
+ 3 对非动态开辟内存的free
+int main()
+{
+	int a = 10;
+	int* p = &a; 
+	*p = 20;
+	free(p); // 对非动态开辟内存的free
+	p = NULL;
+	return 0;
+}
+ 4 使用free释放动态内存的一部分
+int main()
+{
+	int* p = (int*)malloc(40);
+	if (p == NULL)
+	{
+		return 0;
+	}
+	else
+	{
+		int i = 0;
+		for (i = 0; i < 10; i++)
+		{
+			*p++ = i; // p发生了变化
+		}
+	}
+	free(p); //只能从空间首地址开始释放空间
+	p = NULL;
+	return 0;
+}
+ 5 对同一块动态内存的多次释放
+int main()
+{
+	int* p = (int*)malloc(40);
+	if (p == NULL)
+	{
+		return 0;
+	}
+	else
+	{
+		;
+	}
+	free(p);
+	p = NULL; // 手动变p为空指针，防止多次释放报错。
+	// 。。。
+	free(p);
+	return 0;
+}
+ 6 忘记释放动态内存（内存泄露）
+int main()
+{
+	while (1)
+	{
+		malloc(1);   // 只开辟，不回收。
+		Sleep(1000);
+	}
+	return 0;
+}
+
+
+ 经典题目
+ 1 Test执行结果？ error
+void GetMemory(char* p)
+{
+	p = (char*)malloc(100);
+}
+void Test(void)
+{
+	char* str = NULL;
+	GetMemory(str);
+	strcpy(str, "hello world");
+	printf(str);
+}
+
+void GetMemory(char** p) // 改版1
+{
+	*p = (char*)malloc(100);
+}
+void Test(void)
+{
+	char* str = NULL;
+	GetMemory(&str);
+	strcpy(str, "hello world");
+	printf(str);
+	free(str);
+	str = NULL;
+}
+
+char* GetMemory(char** p) // 改版2
+{
+	*p = (char*)malloc(100);
+	return p;
+}
+void Test(void)
+{
+	char* str = NULL;
+	str = GetMemory(&str);
+	strcpy(str, "hello world");
+	printf(str);
+	free(str);
+	str = NULL;
+}
+
+int main()
+{
+	Test();
+	return 0;
+}
