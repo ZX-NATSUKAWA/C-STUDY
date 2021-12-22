@@ -4539,3 +4539,26 @@ int main()
 	Test();
 	return 0;
 }
+ 2 test函数输出结果
+char* GetMemory(void)
+{
+	char p[] = "hello world";
+	return p;
+}
+void Test(void)
+{
+	char* str = NULL;
+	str = GetMemory();
+	printf(str);
+}
+ 改版
+int* Test()
+{
+	int* ptr = (int*)malloc(100);
+	return ptr;
+}
+int main()
+{
+	int* p =Test();
+	return 0;
+}
