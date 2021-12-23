@@ -4562,3 +4562,33 @@ int main()
 	int* p =Test();
 	return 0;
 }
+ 3 
+void GetMemory(char** p, int num)
+{
+	*p = (char*)malloc(num);
+}
+void Test(void)
+{
+	char* str = NULL;
+	GetMemory(&str, 100);
+	strcpy(str, "hello");
+	printf(str); // 忘记释放动态内存空间
+}
+void Test()
+{
+	char* str = (char*)malloc(100);
+	strcpy_s(str, 6,"hello");
+	free(str); //释放空间，但没有把str置NULL
+	str = NULL;
+	if (str != NULL)
+	{
+		strcpy_s(str,6, "world"); // 释放过的空间再次使用
+		printf(str);
+	}
+}
+
+int main()
+{
+	Test();
+	return 0;
+}
