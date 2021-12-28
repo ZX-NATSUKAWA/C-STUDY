@@ -4701,3 +4701,81 @@ int main()
 	pf = NULL;
 	return 0;
 }
+ 文件缓冲区
+ ANSIC用缓冲文件系统，系统自动在内存中为程序中每一个正在使用的文件开辟一块文件缓冲区。
+ 内存向磁盘输出数据先放缓冲区，装满后统一送到磁盘。从磁盘读数据，先充满缓冲区，再从缓冲区中逐一送数据到程序数据区。
+
+ 文件指针:文件类型指针
+ 被使用文件在内存中开辟了一个相应的文件信息区，用来存放文件相关信息（名字、状态、当前位置等）。被保存在一个结构体变量中，名为FILE。
+struct _iobuf {
+	char* _ptr;
+	int _cnt;
+	char* _base;
+	int _flag;
+	int _file;
+	int _charbuf;
+	int _bufsiz;
+	char* _tmpfname;
+};
+typedef struct _iobuf FILE;
+ 定义pf是一个指向FILE类型的指针变量，指向文件信息区，找到与之关联的文件。
+
+
+ 文件的打开和关闭
+int main()
+{
+    // 相对路径写法中， .. 表示上一级路径  . 表示当前路径
+	FILE* pf = fopen("../test.txt", "r"); // 打开文件名(相对路径）  打开方式（只读）
+	if (pf == NULL)
+	{
+		printf("%s\n", strerror(errno));
+	}
+	//打开文件
+	//读文件
+	//关闭文件
+	fclose(pf); // 让这个结构体关闭，释放内存空间，但pf没有变空指针
+	pf = NULL;  // 手动将pf置空指针
+	return 0;
+}
+int main()
+{
+	FILE* pfWrite = fopen("TEST.txt","w");
+	if (pfWrite == NULL)
+	{
+		printf("%s\n", strerror(errno));
+		return 0;
+	}
+	// 写文件
+	fputc('b', pfWrite);
+	fputc('i', pfWrite);
+	fputc('t', pfWrite);
+	// 关闭文件
+	fclose(pfWrite);
+	pfWrite = NULL;
+}
+int main()
+{
+	FILE* pfRead = fopen("TEST.txt", "r");
+	if (pfRead == NULL)
+	{
+		printf("%s\n", strerror(errno));
+		return 0;
+	}
+	// 写文件
+	printf("%c ", fgetc(pfRead));
+	printf("%c ", fgetc(pfRead));
+	printf("%c ", fgetc(pfRead));
+	// 关闭文件
+	fclose(pfRead);
+	pfRead = NULL;
+}
+
+ 从键盘输入  （键盘：标准输入设备）stdin
+ 输出到屏幕  （屏幕：标准输出设备）stdout
+ 键盘和屏幕都是外设 （程序默认打开的两个流设备） （默认打开3个 分别为是stdin FILE*，stdout FILE*，stderr FILE*
+int main()
+{
+	int ch = fgetc(stdin); // 读一个字符
+	fputc(ch, stdout);     // 输出一个字符到屏幕
+	return 0;
+}
