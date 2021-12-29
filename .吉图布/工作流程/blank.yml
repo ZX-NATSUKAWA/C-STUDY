@@ -4779,3 +4779,44 @@ int main()
 	fputc(ch, stdout);     // 输出一个字符到屏幕
 	return 0;
 }
+ 读取或输出一个字符串 
+int main()
+{
+	char buf[1024] = { 0 };
+	FILE* pf = fopen("test.txt", "r");
+	if (pf == NULL)
+	{
+		return 0;
+	}
+	fgets(buf, 1024, pf);
+	printf("%s\n", buf);
+	// outs(buf);
+	fclose(pf);
+	pf = NULL;
+	return 0;
+}
+int main()
+{
+	char buf[1024] = { 0 };
+	FILE* pf = fopen("test.txt", "w");
+	if (pf == NULL)
+	{
+		return 0;
+	}
+	fputs("hello", pf);
+	fputs("world", pf);
+	fclose(pf);
+	pf = NULL;
+	return 0;
+}
+
+ 读取或输出一行 
+int main()
+{
+	char buf[1024] = { 0 };
+	//fgets(buf,1024,stdin); // 从标准输入读，放到buf里面
+	//fputs(buf, stdout);    // 从buf输出到标准输出
+	gets(buf);
+	puts(buf);
+	return 0;
+}
