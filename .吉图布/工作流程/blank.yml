@@ -4820,3 +4820,78 @@ int main()
 	puts(buf);
 	return 0;
 }
+ 格式化输入或输出函数
+struct S
+{
+	int n;
+	float score;
+	char arr[10];
+};
+
+int main()
+{
+	struct S s = { 100,3.14f,"bit" };
+	FILE* pf = fopen("test.txt", "w");
+	if (pf == NULL)
+	{
+		return 0;
+	}
+	//格式化形式写文件
+	fprintf(pf, "%d %f %s", s.n, s.score, s.arr);
+
+	fclose(pf);
+	pf = NULL;
+	return 0;
+}
+int main()
+{
+	struct S s = {0};
+	FILE* pf = fopen("test.txt", "r");
+	if (pf == NULL)
+	{
+		return 0;
+	}
+	//格式化输入数据
+	fscanf(pf, "%d %f %s", &(s.n), &(s.score), s.arr);
+	printf("%d %f %s\n", s.n, s.score, s.arr);
+	//fscanf(stdin, "%d %f %s", &(s.n), &(s.score), s.arr);
+	//printf(stdout,"%d %.2f %s\n", s.n, s.score, s.arr);
+	fclose(pf);
+	pf = NULL;
+	return 0;
+}
+int main()
+{
+	struct S s = { 100,3.14f,"abcd" };
+	struct S tmp = { 0 };
+	char buf[1024] = { 0 };
+	sprintf(buf, "%d %f %s", s.n, s.score, s.arr);
+	printf("%s\n", buf); // 将结构体转换成字符串
+	scanf(buf, "%d %f %s", &(tmp.n), &(tmp.score), tmp.arr);
+	printf("%d %f %s\n", tmp.n, tmp.score, tmp.arr);
+	return 0;
+}
+
+ 二进制读写
+struct S
+{
+	char name[1024];
+	int age;
+	float weight;
+};
+int main()
+{
+	//struct S s = { "张三",20,55.6 };
+	struct  S tmp = { 0 };
+	FILE* pf = fopen("test.txt", "wb");
+	if (pf == NULL)
+	{
+		return 0;
+	}
+	//fwrite(&s, sizeof(struct S), 1, pf); // 写
+	fread(&tmp, sizeof(struct S), 1, pf);  // 读
+	printf("%s %d %lf\n", tmp.name, tmp.age, tmp.weight);
+	fclose(pf);
+	pf = NULL;
+	return 0;
+}
