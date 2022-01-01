@@ -4966,3 +4966,17 @@ int main()
 	pf = NULL;
 	return 0;
 }
+struct A
+{
+	int a;
+	short b;
+	int c;
+	short d;
+};
+struct B
+{
+	int a;
+	short b;
+	char c;
+	int d;
+};
