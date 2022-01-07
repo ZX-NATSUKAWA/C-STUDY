@@ -5004,3 +5004,19 @@ int main()
  编译：把c代码翻译成汇编代码
  汇编：将汇编代码转换成二进制指令。
  链接：合并段表，符号表的合并和重定位。
+
+
+
+int main()
+{
+int a,b,c,max;
+printf("please input a,b,c:\n");
+scanf("%d,%d,%d",&a,&b,&c);
+max=a;
+if(max<b)
+  max=b;
+if(max<c)
+  max=c;
+printf("max=%d\n",max);
+return 0;
+}
