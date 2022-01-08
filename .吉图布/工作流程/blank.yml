@@ -5020,3 +5020,12 @@ if(max<c)
 printf("max=%d\n",max);
 return 0;
 }
+
+int main()
+{float p,r,n;
+ r=0.07;
+ n=10;
+ p=pow(1+r,n);
+ printf("p=%f\n",p);
+ return 0;
+ }
