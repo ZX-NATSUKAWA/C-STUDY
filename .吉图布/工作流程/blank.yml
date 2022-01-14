@@ -5005,7 +5005,115 @@ int main()
  汇编：将汇编代码转换成二进制指令。
  链接：合并段表，符号表的合并和重定位。
 
+ 程序的执行环境
+ 1.程序载入内存。
+ 2.程序开始执行，调用main函数。
+ 3.开始执行程序代码。用堆栈存储函数的局部变量和返回地址，用静态区存储整个程序过程中需要保留的值。
+ 4.终止程序。可能包含意外终止。
 
+ c语言程序的编译和链接
+ 预定义符号介绍
+int main()
+{
+	//printf("%s\n", __FILE__);
+	//printf("%d\n", __LINE__);
+	//printf("%s\n", __DATE__);
+	//printf("%s\n", __TIME__);
+	int i = 0;
+	int arr[10] = { 0 };
+	FILE* pf = fopen("log.txt", "w");
+	for (i = 0; i < 10; i++)
+	{
+		arr[i] = i;
+		fprintf(pf, "file:%s line:%d date:%s time:%s i=%d\n",
+			__FILE__, __LINE__, __DATE__, __TIME__, i);
+		printf("%s\n", __FUNCTION__);
+	}
+	fclose(pf);
+	pf = NULL;
+	for (i = 0; i < 10; i++)
+	{
+		printf("%d", arr[i]);
+	}
+	return 0;
+}
+int main()
+{
+	printf("%d\n", __STDC__); // __STDC__ 遵从ANSI C协议则输出1，否则未定义。
+	return 0;
+}
+
+
+ 预处理指令#define
+ #开头的都是预处理指令 #if #endif #pragma #ifdef #line
+ 申明字符
+#define MAX 100
+#define STR "hehe"
+#define reg register
+#define do_forever for(;;)
+int main()
+{
+	reg int a;
+	int max = MAX;
+	printf("%d\n", max);
+	printf("%s\n", STR);
+	do_forever;                     
+	return 0;
+}
+ 申明宏
+#define SQUARE(X) (X)*(X)
+int main()
+{
+	//int ret = SQUARE(5);
+	//printf("ret=%d\n", ret);
+	int ret = SQUARE(5 + 1);
+	printf("%d\n", ret); //宏是完整替换而不是传参，5+1*5+1=11 而不是36  给X加括号可解决
+	return 0;
+}
+ 调用宏时，检查参数是否包含宏，被包含的宏首先被替换
+#define MAX 100
+#define DOUBLE(X) ((X)+(X))
+int main()
+{
+	int a = 5;
+	int ret = 10 * DOUBLE(MAX);
+	printf("%d\n", ret);
+	return 0;
+}
+ 替换文本随后被插入到程序中原来文本的位置。对于宏，参数名被他们的值替换。
+ 最后再次对文本进行扫描，如有#define定义的符号则重复上述过程。
+ 字符串中的符号不被替换。
+void print(int a)
+{
+	printf("the value of a is %d\n", a);  //要打印b却是a的名字
+}
+int main()
+{
+	int a = 10;
+	int b = 20;
+	print(a);
+	print(b);
+	return 0;
+}
+#define PRINT(X) printf("the value of "#X" is %d",X); // #X表示X代表的内容为字符串
+int main()
+{
+	printf("hello world \n");
+	printf("hello " "world\n");
+	printf("hel""lo ""world\n");
+	int a = 10;
+	int b = 20;
+	PRINT(a);
+	PRINT(b);
+	return 0;
+}
+#define CAT(X, Y) X##Y // ##将它两边的符号合成一个符号
+int main()
+{
+	int c1 = 4;
+	printf("%d\n", CAT(c, 1));
+	return 0;
+}
 
 int main()
 {
