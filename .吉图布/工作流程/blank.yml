@@ -5114,7 +5114,71 @@ int main()
 	printf("%d\n", CAT(c, 1));
 	return 0;
 }
+ 宏和函数的对比
+#define MAX(X,Y) (X)>(Y)?(X):(Y) // 宏常被用于简单计算。宏与类型无关， 宏比函数在程序和规模上小，执行速度快
+int main()
+{
+	int a = 10;
+	int b = 11;
+	int max = MAX(a++, b++);    // ++产生副作用
+	printf("%d\n", max);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	return 0;
+}
+int Max(int x, int y)            // 函数可以调试，宏不行。 宏类型无关，容易出错。 宏容易有运算优先级问题。
+{
+	return (x > y ? x : y);
+}
+int main()
+{
+	int a = 10;
+	int b = 20;
+	int max = Max(a, b);
+	int max1 = MAX(a, b);
+	printf("%d\n", max);
+	printf("%d\n", max1);
+	return 0;
+}
+ 宏可以传类型
+#define MALLOC(num,type) (type*)malloc(num*sizeof(type))
+int main()
+{
+	int*p =(int*) malloc(10 * sizeof(int));
+	int* p = MALLOC(10, int);
+	return 0;
+}
+ 宏全大写，函数名不全大写
 
+ 命令行定义：在命令行中定义符号，用于启动编译过程，帮助将一个源文件创建不同版本用于不同机器上运行。 
+ 预处理指令#include
+ 条件编译：选择性编译代码
+int main()
+{
+	int arr[10] = { 0 };
+	int i = 0;
+	for (i = 0; i < 10; i++)
+	{
+		arr[i] = i;
+#ifdef DEBUG  // 判断是否被定义。 如果定义了DEBUG，则编译，否则不编译。
+		printf("%d ", arr[i]);
+#endif
+	}
+	return 0;
+}
+int main()
+{                        // 多分支条件编译 常量表达式
+#if 1==2                 // 如果第一条满足编译条件，则编译第一条，下面的不编译。
+	printf("haha\n");
+#elif 2==1
+	printf("hehe\n");
+#else
+	printf("hihi\n");
+#endif
+	printf("\n");
+
+	return 0;
+}
 int main()
 {
 int a,b,c,max;
