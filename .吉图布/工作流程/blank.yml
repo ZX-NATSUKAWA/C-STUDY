@@ -5181,6 +5181,35 @@ int main()
 }
 int main()
 {
+#ifndef DEBUG         // 如果没定义，则编译
+	printf("\n");
+#endif
+	return 0;
+}
+
+ 嵌套指令
+int main()
+{
+#if defined(OS_UNIX)
+	#ifdef OPTION1
+	  unix_version_option1();
+    #endif
+	#ifdef OPTION2
+	  unix_version_option2();
+	#endif
+#elif defined(OS_MSDOS)
+	#ifdef OPTION2
+	msdos_version_option2();
+	#endif
+#endif
+	return 0;
+}
+
+
+
+
+int main()
+{
 int a,b,c,max;
 printf("please input a,b,c:\n");
 scanf("%d,%d,%d",&a,&b,&c);
