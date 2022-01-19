@@ -5244,6 +5244,54 @@ int main()
 
 
 
+
+
+SECOND
+// 打印
+//int main()
+//{
+//	printf("This is a C program.\n");
+//	return 0;
+//}
+// 求和
+//int main()
+//{
+//	int a, b, sum;
+//	a = 123;
+//	b = 456;
+//	sum = a + b;
+//	printf("sum is %d\n", sum);
+//	return 0;
+//}
+// 找最大数
+//int max(int x, int y)
+//{
+//	int z;
+//	if (x > y)
+//		z = x;
+//	else
+//		z = y;
+//	return z;
+//}
+//int main()
+//{
+//	int a, b, c;
+//	scanf_s("%d,%d", &a, &b);
+//	c = max(a, b);
+//	printf("max=%d\n", c);
+//	return 0;
+//}
+
+// 程序：一组计算机能识别和执行的指令。
+// 为什么需要计算机语言？ 便于人和计算机交流信息。
+// 高级语言的特点：容易理解，功能强，适用任何型号的计算机。
+// C语言特点：语言简洁紧凑，使用方便灵活；
+//            运算符丰富；
+//			  数据类型丰富；
+//            具有结构化控制语句；
+//            语法限制不严格，程序设计自由度大；
+//            能直接访问物理地址，进行位操作；可移植性好；
+//            生成目标代码质量高，程序执行效率高。
 int main()
 {
 int a,b,c,max;
