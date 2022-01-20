@@ -5292,6 +5292,95 @@ SECOND
 //            语法限制不严格，程序设计自由度大；
 //            能直接访问物理地址，进行位操作；可移植性好；
 //            生成目标代码质量高，程序执行效率高。
+
+ 程序=算法+数据结构
+ 算法：对操作的描述；数据结构：对数据的描述。
+ 简答算法举例
+ 1
+int main()
+{
+	char arr[50]={0};
+	int i = 0;
+	for (i = 0; i < 50; i++)
+	{
+		arr[i] = i;
+	}
+	int n = 0;
+	while (n < 50)
+	{
+		n = 1;
+		if (arr[n] > 10)
+		{
+			printf("%d ", arr[n]);
+		}
+		n++;
+	}
+	return 0;
+}
+ 2
+int main()
+{
+	int year;
+	for (year = 2000; year < 2501; year++)
+	{
+		if (year % 4 == 0)
+		{
+			if (year % 100 == 0)
+			{
+				printf("%d 不是闰年\n", year);
+			}
+			else
+			{
+				printf("%d 是闰年\n", year);
+			}
+		}
+		else
+		{
+			printf("%d 不是闰年\n", year);
+		}
+	}
+	return 0;
+}
+ 3
+int main()
+{
+	int sign = 1;
+	double sum = 1.0;
+	double term;
+	double deno = 2.0;
+	while (deno <= 100)
+	{
+		sign = (-1) * sign;
+		term = sign * (1 / deno);
+		sum = sum + term;
+		deno = deno + 1;
+	}
+	printf("%f ", sum);
+	return 0;
+}
+ 4
+int main()
+{
+	int a;
+	scanf_s("%d", &a);
+	int i = 2;
+	while (i<= a/2)
+	{
+		if (a % i == 0)
+		{
+			printf("%d不是素数\n", a);
+			return 0;
+		}
+		else
+		{
+			i++;
+		}
+	}
+	printf("%d是素数", a);
+	return 0;
+}
+
+
 int main()
 {
 int a,b,c,max;
