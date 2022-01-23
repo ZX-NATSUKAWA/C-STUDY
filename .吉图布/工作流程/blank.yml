@@ -5541,82 +5541,137 @@ int main()
 //     输出数据向左对齐： %-m,nf
 //   4 e格式符： 指定以指数形式输出实数。  一般自动输出  小数部分6位 指数部分5列。 如____1.234560e+002(_空格）
 //   5 其他格式符; i（十进制整型按实际长度输出） o（八进制整数形式输出） x（十六进制形式输出） u（以十进制整型形式输出无符号数） g（输出浮点数自动变f或是e）
-int main()
-{
-int a,b,c,max;
-printf("please input a,b,c:\n");
-scanf("%d,%d,%d",&a,&b,&c);
-max=a;
-if(max<b)
-  max=b;
-if(max<c)
-  max=c;
-printf("max=%d\n",max);
-return 0;
-}
+// 3.5.3 用printf函数输出数据
+//   1 一般格式
+//     "格式控制" : 用""括起来的字符串，包含格式声明（%字符）用于将数据转换成指定格式后输出，普通字符（它啥样输出啥样）。
+//      域宽：%x字符， x是一个数，用来指定输出数据的宽度（列数），输出数据在右侧。
+//      输出表列  ; ("...",x,y);  x,y即为输出表列，用于提供格式声明的元数据
+//   2 格式字符; d表示有符号十进制数，c表示一个字符，s表示一个字符串，f表示以小数形式输出实数（由系统决定长度）。
+//   3 指定数据宽度和小数位数： %m.nf m指定域宽，n指定小数位数。 如果n=0，则小数点一同省略。
+//     输出数据向左对齐： %-m,nf
+//   4 e格式符： 指定以指数形式输出实数。  一般自动输出  小数部分6位 指数部分5列。 如____1.234560e+002(_空格）
+//   5 其他格式符; i（十进制整型按实际长度输出） o（八进制整数形式输出） x（十六进制形式输出） u（以十进制整型形式输出无符号数） g（输出浮点数自动变f或是e）
 
-int main()
-{float p,r,n;
- r=0.07;
- n=10;
- p=pow(1+r,n);
- printf("p=%f\n",p);
- return 0;
- }
+// 3.5.4 用scanf函数输入数据
+//   1 一般格式 
+//     "格式控制"同printf。 地址列表：可以是变量地址（&x），或者字符串首地址。（表示把输入的值存入哪里）
+//   2 格式声明： 类printf。
+//   3 注意事项：
+//     scanf的格式控制后是变量地址（&x），而不是变量名（x）
+//     如果除格式声明外还有其他字符，则后面地址列表注意对应关系。
+//     转义字符和空格字符，在格式控制中都算作输入
+//int main()
+//{
+//	char a, b, c;
+//	scanf_s("%c%c%c", &a, &b, &c); // 输入abc    输入a b c
+//	printf("%c%c%c\n", a, b, c); // 输出abc    输出a b
+//	return 0;
+//}    输入数值数据时，若输入空格、回车、tab或遇非法字符（不属于数值的字符），则数据输入结束。
 
-int main()
-{
-float d=300000,p=6000,r=0.01,m;
-m=lg10(p/(p-d*r))/lg10(1+r);
-printf("m=%6.1f\n",m);
-return 0;
-}
+// 3.5.5 字符输入输出函数
+//   1 putchar输出一个字符： putchar(c);
+//int main()
+//{
+//	char a = 'h', b = 'e', c = 'y';
+//	int d = 66, e = 79, f = 89;
+//	putchar(a);
+//	putchar(b);
+//	putchar(c);
+//	putchar('\n');
+//	putchar(d);
+//	putchar(e);
+//	putchar(f);
+//	return 0;
+//}
+//   2 getchar输入一个字符：getchar()
+//int main()
+//{
+//	char a = getchar();
+//	char b = getchar();
+//	putchar(a);
+//	putchar(b);
+//	putchar(getchar());
+//	putchar('\n');
+//	return 0;
+//}
+//   将输入的大写字母输出为小写
+//int main()
+//{
+//	char c1, c2;
+//	c1 = getchar();
+//	c2 = c1 + 32;
+//	putchar(c2);
+//	return 0;
+//}
 
-int main()
-{char c1,c2;
-c1=97;
-c2=98;
-printf("c1=%c,c2=%c\n",c1,c2);
-printf("c1=%d,c2=%d\n",c1,c2);
-return 0;
-}
 
-int main()
-{int a,b;
-float x,y;
-char c1,c2;
-scanf("a=%d b=%d".&a,&b);
-scanf("%f %e",&x,&y);
-scanf("%c%c",&c1,&c2);
-printf("a=%d,b=%d,x=%f,y=%f,c1=%c,c2=%c\n",a,b,x,y,c1,c2);
-return 0;
-}
+// TEST
+// 1 计算n年后生产总值增长多少倍
+//int main()
+//{
+//	int n;
+//	printf("请输入多少年：");
+//	scanf_s("%d", &n);
+//	double r = 0.07,p = 1.0 ;
+//	int i = 0;
+//	//for (i = 0; i < n ; i++)
+//	//{
+//	//	p = (1 + r) * p;
+//	//}
+//	p = pow(1 + r, n);
+//	printf("增长了%f倍\n", p);
+//	return 0;
+//}
 
-int main()
-{
-int a=10;
-int* b=5;
-if(*b > a)
-{printf("b\n");}
-else
-  return 0;
-  }
+// 2 算利息（这老师这么喜欢经济问题吗）
+//int main()
+//{
+//	double p1, p2, p3, p4, p5;
+//	double r1 = 0.015, r2 = 0.021, r3 = 0.0275, r5 = 0.03, r0 = 0.0035;
+//	printf("%f\n", p1 = 1000 * (1 + 5 * r5));
+//	printf("%f\n", p2 = 1000 * (1 + 2 * r2)*(1 + 3 * r3));
+//	printf("%f\n", p3 = 1000 * (1 + 3 * r3) * (1 + 2 * r2));
+//	printf("%f\n", p4 = 1000 * pow(1 + r1, 5));
+//	printf("%f\n", p5 = 1000 * pow(1 + r0 / 4, 20));
+//	return 0;
+//}
 
-int main()
-{
-float h,r,l,s,sq,vq,vz;
-float pi=3.1415926;
-printf("请输入圆半径r，圆柱h：");
-scanf("%f,%f",&r.&h);
-l=2*pi*r;
-s=r*r*pi;
-sq=4*pi*r*r;
-vq=4.0/3.0*pi*r*r*r;
-vz=pi*r*r*h;
-printf("圆周长为： l=%6.2f\n",l);
-printf("圆面积为： s=%6.2f\n",s);
-printf("球面积为： sq=%6.2f\n",sq);
-printf("球体积为： v=%6.2f\n",v);
-printf("圆柱体积为： vz=%6.2f\n",vz);
-return 0;
-)
+// 3 算还款所需月数
+//int main()
+//{
+//	float d = 300000, p = 6000, r = 0.01, m;
+//	m = log10(p / (p - d * r)) / log10(1 + r);
+//	printf("m=%6.1f\n", m);
+//	return 0 ;
+//}
+
+// 4 数据输入
+//int main()
+//{
+//	int a, b;
+//	float x, y;
+//	char c1, c2;
+//	scanf_s("%d%d", &a, &b);
+//	scanf_s("%f%e", &x, &y);
+//	scanf_s("%c%c", &c1, &c2);
+//	return 0;
+//}
+
+// 5 译码
+//int main()
+//{
+//	char a, b, c, d, e;
+//	scanf_s("%c%c%c%c%c", &a,1, &b,1, &c,1, &d,1, &e,1);
+//	printf("%c%c%c%c%c\n", (a + 4), (b + 4), (c + 4), (d + 4), (e + 4));
+//	return 0;
+//}
+
+// 6 圆球相关运算
+//int main()
+//{
+//	float r = 1.5, l, s, sb, vb, vp,pi=3.1415926;
+//	int h = 3;
+//	printf("圆周长=%6.2f\n圆面积=%6.2f\n圆球表面积=%6.2f\n圆球体积=%6.2f\n圆柱体积=%6.2f\n", l = 2 * pi * r,
+//		s = pi * r * r, sb = 4 * pi * r * r, vb = 4.0 / 3.0 * pi * r * r * r, vp = pi * r * r * h);
+//	return 0;
+//}
