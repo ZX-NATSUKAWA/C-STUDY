@@ -5905,3 +5905,35 @@ int main()
 //	printf("总运费为=%10.2f\n", f);
 //	return 0;
 //}
+// 4 分段函数
+//int main()
+//{
+//	int x, y;
+//	scanf_s("%d", &x);
+//	if (x < 1)
+//		y = x;
+//	else if (1 <= x < 10)
+//		y = 2 * x - 1;
+//	else
+//		y = 3 * x - 11;
+//	printf("%d", y);
+//	return 0;
+//}
+
+// 5 成绩分段
+//int main()
+//{
+//	int x;
+//	scanf_s("%d", &x);
+//	if (x >= 90)
+//		printf("A\n");
+//	else if (80 <= x < 90)
+//		printf("B\n");
+//	else if (70 <= x < 79)
+//		printf("C\n");
+//	else if (60 <= x < 69)
+//		printf("D\n");
+//	else
+//		printf("E\n");
+//	return 0;
+//}
