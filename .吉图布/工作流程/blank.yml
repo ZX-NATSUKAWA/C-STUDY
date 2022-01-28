@@ -6124,3 +6124,135 @@ int main()
 //	printf("\n");
 //	return 0;
 //}
+
+// 5.7.4 循环程序举例
+// 1 求pie近似值
+//int main()
+//{
+//	int sign = 1;
+//	double pi = 0.0;
+//	double i = 1.0;
+//	double term = 1.0;
+//	while (fabs(term) >= 1e-6)   //fabs求绝对值函数
+//	{
+//		pi = pi + term;
+//		i = i + 2;
+//		sign = -sign;
+//		term = sign/i;
+//	}
+//	pi = 4 * pi;
+//	printf("%10.8f\n", pi);
+//	return 0;
+//}
+
+// 2 求斐波那契数列前40个数
+//int main()
+//{
+//	int f1 = 1, f2 = 1, f3;
+//	int i;
+//	printf("%12d\n%12d\n", f1, f2);
+//	for (i = 1; i <= 38; i++)
+//	{
+//		f3 = f1 + f2;
+//		printf("%12d\n", f3);
+//		f1 = f2;
+//		f2 = f3;
+//	}
+//	return 0;
+//}
+// 改进版
+//int main()
+//{
+//	int f1 = 1, f2 = 1;
+//	int i;
+//	for (i = 1; i <= 20; i++)
+//	{
+//		printf("%12d %12d ", f1, f2);
+//		if (i % 2 == 0)
+//			printf("\n");  // 4个数一行
+//		f1 = f1 + f2;
+//		f2 = f2 + f1;
+//	}
+//	return 0;
+//}
+
+// 3 判断素数
+//int main()
+//{
+//	int n, i, k;
+//	printf("请输入：");
+//	scanf_s("%d", &n);
+//	k = sqrt(n);
+//	for (i = 2; i <= k; i++)
+//	{
+//		if (n % i == 0)
+//			break;
+//	}
+//	if (i <= k)      // 出循环时，若i<k说明n有因数；若i=k+1，说明在2到k个数内n都没有因数，即i是素数。
+//		printf("%d 不是素数\n", n);
+//	else
+//		printf("%d 是素数\n", n);
+//	return 0;
+//}
+
+// 4 求100到200的全部素数
+//int main()
+//{
+//	int n, k, i, m = 0;
+//	for (n = 101; n < 200; n=n + 2)  // 偶数一定不是素数，所以只对奇数进行计算以减少时间复杂度
+//	{
+//		k = sqrt(n);
+//		for (i = 2; i <= k; i++)
+//		{
+//			if (n % i == 0)
+//				break;
+//		}
+//		if (i >= k + 1)
+//		{
+//			printf("%d ", n);
+//			m = m + 1;
+//		}
+//		if (m % 10 == 0)
+//			printf("\n");  // 满十个数换行
+//	}
+//	printf("\n");
+//	return 0;
+//}
+
+// 5 译码
+//int main()
+//{
+//	char c;
+//	c = getchar();
+//	while ('c' != '\n')
+//	{
+//		if (('c' >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+//		{
+//			if ((c >= 'W' && c <= 'Z') || (c >= 'w' && c <= 'z'))
+//				c = c - 22;
+//			else
+//				c = c + 4;
+//		}
+//		printf("%c",c);
+//		c = getchar();
+//	}
+//	printf("\n");
+//	return 0;
+//}
+// 改进
+//int main()
+//{
+//	char c;
+//	while (c = getchar() != '\n')
+//	{
+//		if (('c' >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+//		{
+//			c = c + 4;  // 先全加4
+//			if ((c >= 'W' && c <= 'Z') || (c >= 'w' && c <= 'z'))
+//				c = c - 26; // 属于最后四个字母的减22减4
+//		}
+//		printf("%c",c);
+//	}
+//	printf("\n");
+//	return 0;
+//}
