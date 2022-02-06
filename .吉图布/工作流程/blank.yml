@@ -6832,3 +6832,34 @@ int main()
 //   1 逐个字符输入输出，用格式符%c
 //   2 整个字符串一次输入或输出，用格式符%s
 //   注意：数组中未赋值的元素自动赋\0，输出时遇到\0结束，所以可能导致输出部分。
+
+// 6.3.6 使用字符串处理函数
+//   1 puts函数 输出字符串
+//int main()
+//{
+//	char str[] = { "China\nBeijing" };
+//	puts(str);
+//	return 0;
+//}
+//  2 gets函数 输入字符串
+//int main()
+//{
+//	char str[255] = {"0"};
+//	gets_s(str);
+//	return 0;
+//}
+//  3 strcat函数 字符串连接函数
+//int main()
+//{
+//	char str1[30] = { "People's Republic of " };
+//	char str2[] = { "China" };
+//	printf("%s", strcat(str1, str2));
+//	return 0;
+//}
+//  4 strcpy和strncpy函数 字符串复制函数
+//int main()
+//{
+//	char str1[10], str2[] = "china";
+//	strcpy(str1, str2);
+//	return 0;
+//}
