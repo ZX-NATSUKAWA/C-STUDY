@@ -6863,3 +6863,62 @@ int main()
 //	strcpy(str1, str2);
 //	return 0;
 //}
+//  5 strcmp函数 字符串比较函数
+//    将两个字符串自左至右逐个字符相比（按照ASCII码大小），直到出现不同字符或\0。
+//    对于英文字母比大小，字母靠后的大，小写比大写大。
+//    函数返回值：相同得0，大得正整数，小得负整数
+//  6 strlen函数 测字符串长度
+//int main()
+//{
+//	char str[10] = "china";
+//	int a = strlen(str);
+//	printf("%d\n", a); // 5 测字符串有效长度，不算'\0'
+//	return 0;
+//}
+//  7 strlwr函数 转换小写函数
+//    大写字母转小写
+//  8 strupr函数 转换大写函数
+//    小写字母转大写
+
+// 6.3.7 字符数组应用举例
+//   1 输入一行字符，统计其中单词数并用空格分隔开
+//int main()
+//{
+//	char str[81];
+//	int i, num = 0, word = 0;
+//	char c;
+//	gets_s(str,81);
+//	for (i = 0; (c = str[i]) != '\0'; i++)
+//	{
+//		if (c == ' ')
+//		{
+//			word = 0;
+//		}
+//		else if (word == 0)
+//		{
+//			word = 1;
+//			num++;
+//		}
+//	}
+//	printf("单词数为%d\n", num);
+//	return 0;
+//}
+//   2 3个字符串找其中最大的
+//int main()
+//{
+//	char str[3][20];
+//	char string[20];
+//	int i;
+//	for (i = 0; i < 3; i++)
+//	{
+//		gets_s(str[i], 20);
+//	}
+//	if (strcmp(str[0], str[1]) > 0)
+//		strcpy(string, str[0]);
+//	else
+//		strcpy(string, str[1]);
+//	if (strcmp(str[2], string) > 0)
+//		strcpy(string, str[2]);
+//	printf("最大的字符串为%s\n", string);
+//	return 0;
+//}
