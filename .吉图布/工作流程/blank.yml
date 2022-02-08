@@ -6922,3 +6922,17 @@ int main()
 //	printf("最大的字符串为%s\n", string);
 //	return 0;
 //}
+
+
+int main()
+{
+ int arr[10]={"0"};
+ int*pa=int* arr[0];
+ int i;
+ for(i=0;i<10;i++)
+ {
+  pa=i;
+  pa++
+ }
+ return 0;
+}
