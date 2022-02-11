@@ -7018,3 +7018,69 @@ int main()
 	printf("\n");
 	return 0;
 }
+ 3 求3x3整型矩阵对角线元素之和
+int main()
+{
+	int a[3][3], sum = 0;
+	int i, j;
+	printf("请输入矩阵元素：\n");
+	for (i = 0; i < 3; i++)
+	{
+		for (j = 0; j < 3; j++)
+		{
+			scanf_s("%3d", &a[i][j]);
+		}
+	}
+	for (i = 0; i < 3; i++)
+	{
+		sum = sum + a[i][i];
+	}
+	printf("sum=%6d\n", sum);
+	return 0;
+}
+ 4 已有排序好的数组，输入一个元素按原有规律插入数组
+int main()
+{
+	int arr[11] = { 1,4,6,9,13,19,28,40,100 };
+	int temp1, temp2, number, end, i, j;
+	printf("arr:\n");
+	// 输出初始数组
+	for (i = 0; i <= 10; i++)
+	{
+		printf("%5d", arr[i]);
+	}
+	printf("\n");
+	// 输入元素
+	printf("请输入一个元素：\n");
+	scanf_s("%d", &number);
+	// 判断元素大小，插入元素
+	end = arr[9];
+	if (number > end)
+		arr[10] = number;
+	else
+	{
+		for (i = 0; i < 10; i++)
+		{
+			if (arr[i] > number)
+			{
+				temp1 = arr[i];
+				arr[i] = number;
+				for (j = i + 1; j < 11; j++) // 改变元素下标
+				{
+					temp2 = arr[j];
+					arr[j] = temp1;
+					temp1 = temp2;
+			    }
+			break;
+			}
+		}
+	}
+	// 输出新数组
+	printf("new arr:\n");
+	for (i = 0; i <= 11; i++)
+	{
+		printf("%5d", arr[i]);
+	}
+	printf("\n");
+	return 0;
+}
