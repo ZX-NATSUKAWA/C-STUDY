@@ -7333,3 +7333,128 @@ int main()
 	}
 	return 0;
 }
+// 10 统计文章中大写字母，小写字母，数字，空格及其他字符个数
+//#define N 3
+//#define M 80
+//int main()
+//{
+//	// 初始化
+//	int i, j, k, upp, low, dig, spa, oth;
+//	char a[N][M] = { 0 };
+//	// 输入内容
+//	for (i = 0; i < N; i++)
+//	{
+//		printf("请输入内容：\n");
+//		for (j = 0; j < M; j++)
+//		{
+//			scanf_s("%c", &a[i][j], 1);
+//			for (k = 0; (k < M) && (a[i][k] != '\0'); k++)
+//			{
+//				if (a[i][k] >= 'A' && a[i][k] <= 'Z')
+//				{
+//					upp++;
+//				}
+//				else if (a[i][k] >= 'a' && a[i][k] <= 'z')
+//				{
+//					low++;
+//				}
+//				else if (a[i][k] >= '0' && a[i][k] <= '9')
+//				{
+//					dig++;
+//				}
+//				else if (a[i][k] == ' ')
+//				{
+//					spa++;
+//				}
+//				else
+//				{
+//					oth++;
+//				}
+//			}
+//		}
+//	}
+//	// 输出内容
+//	for (i = 0; i < N; i++)
+//	{
+//		for (j = 0; j < M; j++)
+//		{
+//			printf("%c", a[i][j]);
+//		}
+//	}
+//	printf("\n");
+//	// 输出统计结果
+//	printf("大写字母个数为：%d\n", upp);
+//	printf("小写字母个数为：%d\n", low);
+//	printf("数字个数为：%d\n", dig);
+//	printf("空格个数为：%d\n", spa);
+//	printf("其他字符个数为：%d\n", oth);
+//	return 0;
+//}
+// 11 打印图案
+// 法1
+//#define N 5
+//#define M 9
+//#define D 5
+//int main()
+//{
+//	char a[N][M] = { 0 };
+//	int i, j, k;
+//	// 全部置*
+//	for (i = 0; i < N; i++)
+//	{
+//		for (j = 0; j < M; j++)
+//		{
+//			a[i][j] = '*';
+//		}
+//	}
+//	// 规定位置置空格
+//	k = M - D;
+//	for (i = 1; i < N; i++)
+//	{
+//		for (j = 0; j <= k - 4; j++)
+//		{
+//			a[i][j] = ' ';
+//		}
+//		k++;
+//	}
+//	k = M - 1;
+//	for (i = N - 2; i >= 0; i--)
+//	{
+//		for (j = M-1; j >= k; j--)
+//		{
+//			a[i][j] = ' ';
+//		}
+//		k--;
+//	}
+//	// 输出图像
+//	for (i = 0; i < N; i++)
+//	{
+//		for (j = 0; j < M; j++)
+//		{
+//			printf("%c ", a[i][j]);
+//		}
+//		printf("\n");
+//	}
+//	printf("\n");
+//	return 0;
+//}
+// 法2
+//int main()
+//{
+//	char a[5] = { '*','*', '*', '*', '*' };
+//	int i, j, k;
+//	for (i = 0; i < 5; i++)
+//	{
+//		printf("\n");
+//		for (j = 1; j <= i; j++)
+//		{
+//			printf(" ");
+//		}
+//		for (k = 0; k < 5; k++)
+//		{
+//			printf("%c", a[k]);
+//		}
+//	}
+//	printf("\n");
+//	return 0;
+//}
