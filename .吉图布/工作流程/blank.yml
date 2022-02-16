@@ -7458,3 +7458,55 @@ int main()
 //	printf("\n");
 //	return 0;
 //}
+// 12 译码
+//int main()
+//{
+//	int i, j, n;
+//	char ch[80], tran[80];
+//	printf("请输入原码：\n");
+//	gets_s(ch, 80);
+//	printf("原码为：%s\n", ch);
+//	j = 0;
+//	while (ch[j] != '\0')
+//	{
+//		if ((ch[j] >= 'A') && (ch[j] <= 'Z'))
+//		{
+//			tran[j] = 155 - ch[j];
+//		}
+//		else if ((ch[j] >= 'a') && (ch[j] <= 'z'))
+//		{
+//			tran[j] = 219 - ch[j];
+//		}
+//		else
+//			tran[j] = ch[j];
+//		j++;
+//	}
+//	n = j;  // 记录j个数，即记录有效字符数，防止输出译码+乱码。
+//	for (j = 0; j < n; j++)
+//	{
+//		putchar(tran[j]);
+//	}
+//	printf("\n");
+//	return 0;
+//}
+// 13 用程序将两个字符串连接起来
+//int main()
+//{
+//	char s1[80], s2[40];
+//	int i = 0, j = 0;
+//	printf("请输入字符串1：\n");
+//	scanf_s("%s", s1);
+//	printf("请输入字符串2：\n");
+//	scanf_s("%s", s2);
+//	while (s1[i] != '\0')
+//	{
+//		i++;
+//	}
+//	while (s2[j] != '\0') // 在字符串1的\0处开始，将字符串2替换上去
+//	{
+//		s1[i++] = s2[j++];
+//	}
+//	s1[i] = '\0'; // 新字符串1尾部加上字符串终止符
+//	printf("新数组为：%s\n", s1);
+//	return 0;
+//}
