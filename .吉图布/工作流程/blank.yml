@@ -7791,3 +7791,139 @@ int main()
 //	printf("最大元素为arr[%d]=%d\n", n, m);
 //	return 0;
 //}
+
+// 7.7.2 一维数组名作函数参数
+// 求十个学生平均成绩
+//float Average(float arr[10])
+//{
+//	int i;
+//	float aver, sum = arr[0];
+//	for (i = 1; i < 10; i++)
+//	{
+//		sum = sum + arr[i];
+//	}
+//  aver = sum / n;
+//	return aver;
+//}
+//int main()
+//{
+//	float score[10], aver;
+//	int i;
+//	printf("请输入10个数：");
+//	for (i = 0; i < 10; i++)
+//	{
+//		scanf_s("%f", &score[i]);
+//	}
+//	aver = Average(score);
+//	printf("平均值为：%6.2f\n", aver);
+//	return 0;
+//}
+// 用同一个函数求不同长度数组的平均值
+//#define N1 5
+//#define N2 10
+//float Average(float arr[], int n)
+//{
+//	int i;
+//	float aver, sum = arr[0];
+//	for (i = 1; i < n; i++)
+//	{
+//		sum = sum + arr[i];
+//	}
+//	aver = sum / n;
+//	return aver;
+//}
+//int main()
+//{
+//	float arr1[N1] = { 0 }, arr2[N2] = { 0 };
+//	int i;
+//	printf("请输入数组1的%d个元素：",N1);
+//	for (i = 0; i < N1; i++)
+//	{
+//		scanf_s("%6.2f", &arr1[i]);
+//	}
+//	printf("\n");
+//	printf("请输入数组2的%d个元素：",N2);
+//	for (i = 0; i < N2; i++)
+//	{
+//		scanf_s("%6.2f", &arr2[i]);
+//	}
+//	printf("\n");
+//	printf("数组1平均值为：%6.2f\n", Average(arr1, N1));
+//	printf("数组2平均值为：%6.2f\n", Average(arr2, N2));
+//	return 0;
+//}
+// 用选择法对数组中的10个整数按从小到达排序
+//#define N 10
+//void sort(int arr[], int n)
+//{
+//	int i, j, k, t;
+//	for (i = 0; i < n - 1; i++)
+//	{
+//		k = i;
+//		for (j = i + 1; j < n; j++)
+//		{
+//			if (arr[j] < arr[k])
+//			{
+//				k = j;    // 最小的元素为arr[k]
+//			}
+//		}
+//		t = arr[k];
+//		arr[k] = arr[i];
+//		arr[i] = t;       // 从arr[0]开始一次把最小值放入arr
+//	}
+//}
+//int main()
+//{
+//	int arr[N] = { 0 }, i;
+//	printf("请输入数组的%d个元素：", N);
+//	for (i = 0; i < N;i++)
+//	{
+//		scanf_s("%d", &arr[i]);
+//	}
+//	printf("\n");
+//	sort(arr, N);
+//	for (i = 0; i < N; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	return 0;
+//}
+
+// 7.7.3 多维数组名作函数参数
+//   合法的多维数组名作函数参数。
+//   合法：指定每一维的大小，或省略第一维大小、指明第二维大小。
+// 求矩阵元素最大值
+//#define N 3
+//#define M 4
+//int max(int arr[][M-1],int n,int m)
+//{
+//	int i, j;
+//	int max = arr[0][0];
+//	for (i = 0; i < n; i++)
+//	{
+//		for (j = 0; j < m; j++)
+//		{
+//			if (arr[i][j] > max)
+//			{
+//				max = arr[i][j];
+//			}
+//		}
+//	}
+//	return max;
+//
+//}
+//int main()
+//{
+//	int arr[N-1][M-1], i, j;
+//	printf("请输入%d X %d 数组的元素：", N, M);
+//	for (i = 0; i < N-1; i++)
+//	{
+//		for (j = 0; j < M-1; j++)
+//		{
+//			scanf_s("%d", &arr[i][j]);
+//		}
+//	}
+//	printf("\n");
+//	printf("最大值为：%d\n", max(arr, N-1, M-1));
+//	return 0;
+//}
