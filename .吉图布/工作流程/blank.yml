@@ -8079,3 +8079,37 @@ int main()
 
 // 7.11.2 外部函数
 //   在函数首部最左端加extern。
+
+
+// test
+// 1 求两个函数的最大公约数和最小公倍数
+//int hcf(int x, int y)  //辗转相除法
+//{
+//	int r, t;
+//	if (x > y)
+//	{
+//		t = x;
+//		x = y;
+//		y = t;
+//	}
+//	while ((r = y % x) != 0)
+//	{
+//		y = x;
+//		x = r;
+//	}
+//	return x;
+//}
+//int lcd(int x, int y,int h)
+//{
+//	return (x * y / h);
+//}
+//int main()
+//{
+//	int a, b;
+//	printf("请输入两个整数：");
+//	scanf_s("%d,%d", &a, &b);
+//	int h = hcf(a, b);
+//	printf("最大公约数为：%d\n", hcf(a, b));
+//	printf("最小公倍数为：%d\n", lcd(a, b, h));
+//	return 0;
+//}
