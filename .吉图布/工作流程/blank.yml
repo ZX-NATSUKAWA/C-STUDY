@@ -8228,3 +8228,28 @@ int main()
 	printf("\n");
 	return 0;
 }
+
+#define N 5
+void Inverse_char(char arr[],int size)
+{
+	int i;
+	char t;
+	for (i = 0; i < (size/2); i++)
+	{
+		t = arr[i];
+		arr[i] = arr[size-i-1];
+		arr[size-i-1] = t;
+	}
+}
+int main()
+{
+	char arr[N];
+	int j;
+	printf("请输入字符串：");
+	scanf_s("%s", &arr, N);
+	printf("\n字符串为：%s\n", arr);
+	j = strlen(arr);
+	Inverse_char(arr,j);
+	printf("反序后：%s\n", arr);
+	return 0;
+}
