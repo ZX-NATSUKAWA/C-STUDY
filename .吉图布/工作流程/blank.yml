@@ -8253,3 +8253,61 @@ int main()
 	printf("反序后：%s\n", arr);
 	return 0;
 }
+
+// 6 字符串连接
+//#define N 30
+//#define M 30
+//void Link_char(char arr1[],char arr2[],char arr[])
+//{
+//	int i;
+//	for (i = 0; i < N; i++)
+//	{
+//		if (arr1[i] != '\0')
+//		{
+//			arr[i] = arr1[i];
+//		}
+//		else
+//			break;
+//	}
+//	for (; i < N + M; i++)
+//	{
+//		arr[i] = arr2[i-strlen(arr1)];
+//	}
+//}
+//int main()
+//{
+//	char arr1[N], arr2[M],arr[N+M];
+//	printf("请输入字符串1：");
+//	scanf_s("%s", arr1, N);
+//	printf("请输入字符串2：");
+//	scanf_s("%s", arr2, M);
+//	Link_char(arr1, arr2, arr);
+//	printf("结果为：%s\n", arr);
+//	return 0;
+//}
+
+// 7 识别字符串中的元音字母，并复制到另一字符串输出
+//#define N 80
+//#define M 80
+//void cpy(char s[], char c[])
+//{
+//	int i, j = 0;
+//	for (i = 0; s[i]!='\0'; i++)
+//	{
+//		if ((s[i] == 'a') || (s[i] == 'e') || (s[i] == 'i') || (s[i] == 'u') || (s[i] == 'A') || (s[i] == 'E') || (s[i] == 'I') || (s[i] == 'U'))
+//		{
+//			c[j] = s[i];
+//			j++;
+//		}
+//	}
+//	c[j] = '\0';
+//}
+//int main()
+//{
+//	char s[N], c[M];
+//	printf("请输入字符串：");
+//	scanf_s("%s", s, N);
+//	cpy(s, c);
+//	printf("\n%s\n", c);
+//	return 0;
+//}
