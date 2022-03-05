@@ -8412,3 +8412,31 @@ int main()
 //	printf("\n");
 //	return 0;
 //}
+
+#define N 10
+void Qsort(char arr[])
+{
+	int i, j;
+	char t;
+	for (i = 0; i < N - 1; i++)
+	{
+		for (j = 0; (j < N - i - 1) && (arr[j]!='\0'); j++)
+		{
+			if (arr[j] > arr[j + 1])
+			{
+				t = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = t;
+			}
+		}
+	}
+}
+int main()
+{
+	char arr[N];
+	printf("请输入一个%d字符的字符串：", N);
+	scanf_s("%s", &arr, N);
+	Qsort(arr);
+	printf("\n排序后字符串为：%s\n", arr);
+	return 0;
+}
