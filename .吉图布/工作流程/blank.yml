@@ -8413,30 +8413,44 @@ int main()
 //	return 0;
 //}
 
+// 11 
 #define N 10
+char arr[N];
 void Qsort(char arr[])
 {
 	int i, j;
 	char t;
-	for (i = 0; i < N - 1; i++)
+	for (j = 1; j < N; j++)
 	{
-		for (j = 0; (j < N - i - 1) && (arr[j]!='\0'); j++)
+		for (i = 0; (i < N - j) && (arr[i]!='\0'); i++)
 		{
-			if (arr[j] > arr[j + 1])
+			if (arr[i] > arr[i + 1])
 			{
-				t = arr[j];
-				arr[j] = arr[j + 1];
-				arr[j + 1] = t;
+				t = arr[i];
+				arr[i] = arr[i + 1];
+				arr[i + 1] = t;
 			}
 		}
 	}
 }
 int main()
 {
-	char arr[N];
-	printf("请输入一个%d字符的字符串：", N);
-	scanf_s("%s", &arr, N);
+	int i, flag;
+	for (flag = 1; flag == 1;)
+	{
+		printf("请输入一个%d字符的字符串：", N);
+		scanf_s("%s", arr, N);
+		if (strlen(arr) > N)
+			printf("字符串太长，请重新输入！\n");
+		else
+			flag = 0;
+	}
 	Qsort(arr);
-	printf("\n排序后字符串为：%s\n", arr);
+	printf("排序后字符串为：");
+	for (i = 0; i < N; i++)
+	{
+		printf("%c", arr[i]);
+	}
+	printf("\n");
 	return 0;
-}
+} 
