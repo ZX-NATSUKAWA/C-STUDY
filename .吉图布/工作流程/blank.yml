@@ -8454,3 +8454,104 @@ int main()
 	printf("\n");
 	return 0;
 } 
+
+// 14 计算成绩
+//#define S 10
+//#define C 5
+//float arr[S][C];
+//int k, s;
+//void Input(float arr[S][C])
+//{
+//	int i, j;
+//	for (i = 0; i < S; i++)
+//	{
+//		printf("请输入第%d个学生%d门科目的成绩：", (i + 1), C);
+//		for (j = 0; j < C; j++)
+//		{
+//			scanf_s("%f", &arr[i][j]);
+//		}
+//		printf("\n");
+//	}
+//}
+//float S_average(float arr[S][C],int a)
+//{
+//	float sa = 0;
+//	int j;
+//	for (j = 0; j < C; j++)
+//	{
+//		sa = sa + arr[a][j];
+//	}
+//	return (sa / C);
+//}
+//float C_average(float arr[S][C],int a)
+//{
+//	float ca = 0;
+//	int i;
+//	for (i = 0; i < S; i++)
+//	{
+//		ca = ca + arr[i][a];
+//	}
+//	return (ca/S);
+//}
+//float Max(float arr[S][C])
+//{
+//	float max = arr[0][0];
+//	int i, j;
+//	for (i = 0; i < S; i++)
+//	{
+//		for (j = 0; j < C; j++)
+//		{
+//			if (arr[i][j] > max)
+//			{
+//				max = arr[i][j];
+//				s = i + 1;
+//				k = j + 1;
+//			}
+//		}
+//	}
+//	return max;
+//}
+//float S_var(float arr[S][C])
+//{
+//	int i,j;
+//	float all = 0.0, plus = 0.0;
+//	for (i = 0; i < S; i++)
+//	{
+//		all +=  S_average(arr,i);
+//		plus += S_average(arr, i) * S_average(arr, i);
+//	}
+//	return 	 (plus / S - (all / S) * (all / S));
+//}
+//void Output(void)
+//{
+//	int i, j;
+//	printf("\n  NO.     cour1   cour2   cour3   cour4   cour5   aver\n");
+//	// 每个学生的平均分
+//	for (i = 0; i < S; i++)
+//	{
+//		printf("\n NO %2d ", (i + 1));
+//		for (j = 0; j < C; j++)
+//		{
+//			printf("%8.2f", arr[i][j]);
+//		}
+//		printf("%8.2f", S_average(arr, i));
+//	}
+//	// 每门课的平均分
+//	printf("\naverage:");
+//	for (i = 0; i < C; i++)
+//	{
+//		printf("%8.2f", C_average(arr, i));
+//	}
+//	printf("\n");
+//	// 单最高分及其对应课程
+//	printf("最高分为%f,属于学生%d,科目%d\n", Max(arr), s, k);
+//	// 平均分方差
+//	printf("平均分方差为：%8.2f\n", S_var(arr));
+//}
+//
+//int main()
+//{
+//	Input(arr);
+//	Output();
+//	return 0;
+//}
