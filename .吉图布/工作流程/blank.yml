@@ -8682,3 +8682,58 @@ int main()
 	}
 	return 0;
 }
+
+// 17 递归法整数转换为字符串输出
+//void Convert(int n)
+//{
+//	if (n < 0)
+//	{
+//		n = -n;
+//	}
+//	int i;
+//	if ((i = n / 10) != 0)
+//	{
+//		Convert(i);
+//	}
+//	putchar(n % 10 + '0');
+//	putchar(32);
+//}
+//int main()
+//{
+//	int n;
+//	printf("请输入一个整数：");
+//	scanf_s("%d", &n);
+//	Convert(n);
+//	printf("\n");
+//	return 0;
+//}
+
+// 18 给出年月日，求该日是该年的第几天
+//int If_lunar(int n)
+//{
+//	int flag = 0; // 非闰年
+//	if (((n % 4 == 0) && (n % 100 != 0)) || (n % 400 == 0))
+//		flag = 1; // 闰年
+//	return flag;
+//}
+//int Sum_day(int m, int n)
+//{
+//	int d = 0, i;
+//	int day_tab[13] = { 0,31,28,31,30,31,30,31,31,30,31,30,31 };
+//	for (i = 0; i < m; i++)
+//	{
+//		d = d + day_tab[i];
+//	}
+//	return (d + n);
+//}
+//int main()
+//{
+//	int year, month, day, days;
+//	printf("请输入日期:");
+//	scanf_s("%d.%d.%d", &year, &month, &day);
+//	days = Sum_day(month, day);
+//	if (If_lunar(year) == 1)
+//		days = days + 1;
+//	printf("%d.%d.%d 是该年的第%d天。\n", year, month, day, days);
+//	return 0;
+//}
