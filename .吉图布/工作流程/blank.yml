@@ -8877,3 +8877,46 @@ int main()
 //	printf("\n");
 //	return 0;
 //}
+
+//int main()
+//{
+//	int* p, arr[10], i;
+//	p = arr;
+//	printf("请输入10个元素：");
+//	for (i = 0; i < 10; i++)
+//		scanf_s("%d", p++);
+//	p = arr;                 // 如果没有这句，p此时指向arr[0]+10的位置，下面打印函数将会出错。
+//	for (i = 0; i < 10; i++)
+//		printf("%d ", *p++);
+//	return 0;
+//}
+
+// 8.3.4 用数组名作函数参数
+///  本质是把数组首元素的地址传给函数。
+// 将数组a的n个整数按相反顺序存放
+//#define N 10
+//void Inv(int x[], int n)
+//{
+//	int t, * i, * j;
+//	i = x;
+//	j = x + n - 1;
+//	for (; i < j; i++, j--)
+//	{
+//		t = *i;
+//		*i = *j;
+//		*j = t;
+//	}
+//}
+//int main()
+//{
+//	int arr[N];
+//	printf("请输入%d个元素：", N);
+//	int i, * p = arr;
+//	for (i = 0; i < N; i++)
+//		scanf_s("%d", p++);
+//	Inv(arr, N);
+//	p = arr;
+//	for (i = 0; i < N; i++)
+//		printf("%d ", *p++);
+//	return 0;
+//}
