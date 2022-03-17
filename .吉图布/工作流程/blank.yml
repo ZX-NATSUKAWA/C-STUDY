@@ -8964,3 +8964,60 @@ int main()
 //	printf("%d\n", (*p)[3]);
 //	return 0;
 //}
+//   3 用指向数组的指针作函数参数
+//   两种方法：用指向变量的指针作函数参数，用指向一维数组的指针变量。
+//void Average(float* p, int n)
+//{
+//	float* p_end = p + n - 1;
+//	float sum = 0, aver;
+//	for (; p <= p_end; p++)
+//	{
+//		sum = sum + *p;
+//	}
+//	aver = sum / n;
+//	printf("总平均分为：%5.2f\n",aver );
+//}
+//
+//void Search(float (*p)[4], int n)
+//{
+//	int i;
+//	printf("第%d名同学的成绩是：", n);
+//	for (i = 0; i < 4; i++)
+//	{
+//		printf("%5.2f ", *(*(p + n - 1) + i));
+//	}
+//	printf("\n");
+//}
+//
+//void Search_fail(float(*p)[4], int n)
+//{
+//	int i, j;
+//	for (j = 0; j < n; j++)
+//	{
+//		int flag = 0;
+//		for (i = 0; i < 4; i++)
+//		{
+//			if (*(*(p + j) + i) < 60)
+//			{
+//				flag = 1;
+//			}
+//		}
+//		if (flag)
+//		{
+//			printf("第%d名学生有挂科，他的成绩是：", j + 1);
+//			for (i = 0; i < 4; i++)
+//			{
+//				printf("%5.2f ", *(*(p + j) + i));
+//			}
+//		}
+//	}
+//	printf("\n");
+//}
+//int main()
+//{
+//	float score[3][4] = { {65,67,70,50},{80,87,90,81},{90,99,100,98} };
+//	Average(*score, 12);
+//	Search(score, 2);
+//	Search_fail(score, 3);
+//	return 0;
+//}
