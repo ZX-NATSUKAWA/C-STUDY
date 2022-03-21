@@ -9192,3 +9192,63 @@ int main()
 //	Fun(a, b, p);
 //	return 0;
 //}
+#define A 3
+//#define B 3
+//float* Score(int n,float a[A][B])
+//{
+//	float* p;
+//	p = a[n];
+//	return p;
+//}
+//float* Search_fail(float (* a)[B])
+//{
+//	int i;
+//	float* p;
+//	p = NULL;
+//	for (i = 0; i < B; i++)
+//	{
+//		if (*( * a + i) < 60)
+//			p = *a;
+//	}
+//	return p;
+//}
+//int main()
+//{
+//	float a[A][B];
+//	printf("请录入%d名学生的%d门科目的成绩：", A, B);
+//	float* p;
+//	for (p = a[0]; p < a[0] + A * B; p++)
+//	{
+//		scanf_s("%f", p);
+//	}
+//	//int i = 0;
+//	//for (p = a[0]; p < a[0] + A * B; p++)
+//	//{
+//	//	printf("%5.2f ", *p);
+//	//	i++;
+//	//	if (i % B == 0)
+//	//		printf("\n");
+//	//}
+//	//int n = 0;
+//	//printf("请输入想查找成绩的学生序号：");
+//	//scanf_s("%d", &n);
+//	//p = Score(n,a);
+//	//printf("序号%d的成绩为：", n);
+//	//for (; p[0] < p[0] + B; p++)
+//	//	printf("%5.2f ", *p);
+//	//printf("\n");
+//	int j;
+//	for (j = 0; j < A; j++)
+//	{
+//		p = Search_fail(a + j);
+//		if (p != NULL)
+//		{
+//			int i;
+//			printf("有挂科的学生成绩为：");
+//			for (i = 0; i < B; i++)
+//				printf("%5.2f ", *(p + i));
+//			printf("\n");
+//		}
+//	}
+//	return 0;
+//}
