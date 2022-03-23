@@ -9315,3 +9315,34 @@ int main()
 //	}
 //	return 0;
 //}
+
+//int main()
+//{
+//	int a[5] = { 1,2,3,4,5 };
+//	int* num[5] = { &a[0],&a[1],&a[2],&a[3],&a[4] };
+//	int** p, i;
+//	p = num;
+//	for (i = 0; i < 5; i++)
+//	{
+//		printf("%d ", **p);
+//		p++;
+//	}
+//	printf("\n");
+//	return 0;
+//}
+
+// 8.7.3 指针数组作main函数的形参。
+//   一般main函数没有参数，调用main函数不必给出实参。
+//   实际上，在某些情况下，main函数可以有参数。
+//   int main(int argc,char * argv[])
+//   命令行参数：argc代表参数个数，argv是一个指针数组，指向命令行中的字符串首字符。
+//   命令行一般形式为： 命令名 参数1 参数2 参数3 。。。。。 参数n
+//int main(int argc,char* argv[])
+//{
+//	int i;
+//	for (i = 1; i < argc; i++)
+//	{
+//		printf("%s%c", argv[i], (i < argc - 1) ? ' ' : '\n');
+//	}
+//	return 0;
+//}
