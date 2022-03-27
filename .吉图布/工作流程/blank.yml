@@ -9566,3 +9566,58 @@ int main()
 //	printf("%s\n%s\n%s\n", str1, str2, str3);
 //	return 0;
 //}
+
+// 3 输入10个整数，最小的放最前，最大的放最后，输出
+//void Input(int a[], int n)
+//{
+//	int* p;
+//	printf("请输入%d个整数：",n);
+//	for (p = a; p < a + n; p++)
+//	{
+//		scanf_s("%d", p );
+//	}
+//	printf("\n");
+//}
+//void Max_min_value(int a[], int n)
+//{
+//	int i;
+//	int* p = a;
+//	int *min = p, *max = p, t;
+//	for (i = 1; i < n; i++)    
+//	{
+//		if (*min > *(p + i))
+//			min = (p + i);
+//		if (*max < *(p + i))
+//			max = (p + i);
+//	}
+//	if (a[0] > *min)  // 将最小的数与第一个数换位置
+//	{
+//		t = a[0];
+//		a[0] = *min;
+//		*min = t;
+//	}
+//	if (a[n - 1] < *max) // 将最大的数和最后一个数换位置
+//	{
+//		t = a[n-1];
+//		a[n - 1] = *max;
+//		*max = t;
+//	}
+//}
+//void Output(int a[], int n)
+//{
+//	int i;
+//	int* p;
+//	printf("调整后%d个整数为：", n);
+//	for (p = a; p < a+ n; p++)
+//	{
+//		printf("%d ", *p );
+//	}
+//}
+//int main()
+//{
+//	int a[10];
+//	Input(a, 10);
+//	Max_min_value(a, 10);
+//	Output(a, 10);
+//	return 0;
+//}
