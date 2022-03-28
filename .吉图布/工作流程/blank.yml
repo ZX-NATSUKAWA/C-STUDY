@@ -9621,3 +9621,67 @@ int main()
 //	Output(a, 10);
 //	return 0;
 //}
+
+// 4 n个整数后移m个位置，最后m个数变成最前面m个数。（循环右移m位）
+//#define N 50
+//void Loop_r(int a[], int m, int n)
+//{
+//	int* p, a_end;
+//	a_end = *(a + n - 1);
+//	for (p = a + n - 1; p > a; p--)
+//		*p = *(p - 1);
+//	*a = a_end;
+//	m--;
+//	if (m > 0)
+//		Loop_r(a, m, n);
+//}
+//int main()
+//{
+//	int arr[N], n, m;
+//	int* p = arr;
+//	printf("请输入一共多少个整数：");
+//	scanf_s("%d", &n);
+//	printf("请输入这些整数：");
+//	for (; p < arr + n; p++)
+//		scanf_s("%d", p);
+//	printf("请输入右移的位数：");
+//	scanf_s("%d", &m);
+//	Loop_r(arr, m, n);
+//	for (p = arr; p < arr + n; p++)
+//		printf("%d ", *p);
+//	printf("\n");
+//	return 0;
+//}
+
+// 5 n人一圈报数，一号位开始从一报三，报到3的退圈，最后剩下原来第几号
+//#define N 50
+//int main()
+//{
+//	int i, k, m, n, num[N], * p;
+//	printf("请输入一共多少人：");
+//	scanf_s("%d", &n);
+//	p = num;
+//	for (i = 0; i < n; i++)
+//		*(p + i) = i + 1;  // 从1到n给每个人编号
+//	i = 0;  // 循环计数
+//	k = 0;  // 报号
+//	m = 0;  // 退出人数
+//	while (m < n - 1)     // 当退出人数比n-1少时，继续循环
+//	{
+//		if (*(p + i) != 0)
+//			k++;
+//		if (k == 3)
+//		{
+//			*(p + i) = 0; // 对退出的人编号置0，则最后只剩下一个编号，即为所求
+//			k = 0;
+//			m++;
+//		}
+//		i++;
+//		if (i == n) // 报数一圈后，i恢复0
+//			i = 0;
+//	}
+//	while (*p == 0)
+//		p++;
+//	printf("最后剩下的人编号为：%d\n", *p);
+//	return 0;
+//}
