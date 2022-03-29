@@ -9685,3 +9685,60 @@ int main()
 //	printf("最后剩下的人编号为：%d\n", *p);
 //	return 0;
 //}
+
+// 6 求字符串的长度
+//#define N 20
+//int String_len(char a[])
+//{
+//	int x = 0;
+//	char* pa;
+//	for (pa = a; pa < a + N; pa++,x++)
+//	{
+//		if (*pa == '\0')
+//			return x;
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	char arr[N];
+//	printf("请输入一个字符串：");
+//	scanf_s("%s", arr ,N);
+//	int len = String_len(arr);
+//	if (len == 0)
+//		printf("字符串过长！\n");
+//	else
+//		printf("字符串长度为：%d\n", len);
+//	return 0;
+//}
+
+// 7 将字符串从第m个字符开始的全部字符复制成另一个字符串
+//#define N 20
+//void Locate_cpy(char a1[],char a2[], int m)
+//{
+//	char* p1 = a1 + m - 1;
+//	char* p2 = a2;
+//	while (*p1 != '\0')
+//	{
+//		*p2++ = *p1++;
+//	}
+//	*p2 = '\0';
+//
+//}
+//int main()
+//{
+//	char arr1[N], arr2[N];
+//	int m;
+//	char* p = arr2;
+//	printf("请输入一个字符串：");
+//	scanf_s("%s", arr1, N);
+//	printf("请输入从第几位开始复制：");
+//	scanf_s("%d", &m);
+//	Locate_cpy(arr1, arr2, m);
+//	printf("复制后的字符串为：");
+//	while (*p != '\0')
+//	{
+//		printf("%c", *p++);
+//	}
+//	return 0;
+//}
