@@ -9742,3 +9742,38 @@ int main()
 //	}
 //	return 0;
 //}
+
+//8 输入一行文字，找出其中大写字母、小写字母、空格、数字以及其他字符各有多少。
+//#define N 100
+//int upper = 0, lower = 0, digit = 0, space = 0, other = 0;
+//void Count(char a[])
+//{
+//	char* p = a;
+//	while (*p != '\0')
+//	{
+//		if (( * p >= 'A') && ( * p <= 'Z'))
+//			++upper;
+//		else if (( * p >= 'a') && (*p <= 'z'))
+//			++lower;
+//		else if (( * p >= '0') && ( * p <= '9'))
+//			++digit;
+//		else if (*p == ' ')
+//			++space;
+//		else
+//			++other;
+//		p++;
+//	}
+//}
+//int main()
+//{
+//	char a[N];
+//	printf("请输入一行文字：");
+//	scanf_s("%s", a, N);
+//	Count(a);
+//	printf("大写字母有%d个\n",upper);
+//	printf("小写字母有%d个\n",lower);
+//	printf("空格有%d个\n",space);
+//	printf("数字有%d个\n",digit);
+//	printf("其它字符有%d个\n",other);
+//	return 0;
+//}
