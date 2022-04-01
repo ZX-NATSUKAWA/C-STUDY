@@ -9929,3 +9929,39 @@ int main()
 //		printf("%s\n", *p);
 //	return 0;
 //}
+
+// 12 指针数组处理上一题
+//#define N 10
+//#define M 20
+//void Sort(char* s[])
+//{
+//	int i, j;
+//	char* t;
+//	for (i = 0; i < N - 1; i++)
+//	{
+//		for (j = 0; j < N - i - 1; j++)
+//		{
+//			if (strcmp(*(s + j), *(s + j + 1)) > 0)
+//			{
+//				t = *(s + j);
+//				*(s + j) = *(s + j + 1);
+//				*(s + j + 1) = t;
+//			}
+//		}
+//	}
+//}
+//int main()
+//{
+//	char* p[N], str[N][M];
+//	int i;
+//	for (i = 0; i < N; i++)
+//		p[i] = str[i];
+//	printf("请输入%d个字符串：", N);
+//	for (i = 0; i < N; i++)
+//		scanf_s("%s", p[i], M);
+//	Sort(p);
+//	printf("排序后结果为：\n");
+//	for (i = 0; i < N; i++)
+//		printf("%s\n", p[i]);
+//	return 0;
+//}
