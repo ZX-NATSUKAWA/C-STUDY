@@ -9893,3 +9893,39 @@ int main()
 //	}
 //	return 0;
 //}
+
+// 11 输入10个等长的字符串。用函数排序。
+//#define N 6
+//#define M 5
+//void Sort(char a[M][N])
+//{
+//	char* p;
+//	char t[N];
+//	p = t;
+//	int i, j;
+//	for (i = 0; i < M - 1; i++)
+//	{
+//		for (j = 0; j < M - i - 1; j++)
+//		{
+//			if (strcmp(a[j], a[j + 1]) > 0)
+//			{
+//				strcpy_s(p, N, a[j]);
+//				strcpy_s(a[j], N, a[j + 1]);
+//				strcpy_s(a[j + 1], N, p);
+//			}
+//		}
+//	}
+//}
+//int main()
+//{
+//	char arr[M][N] = {};
+//	char* p = arr[0];
+//	printf("请输入%d个等长字符串：",M);
+//	for (; p < arr[0] + M; p++)
+//		scanf_s("%s", p, N);
+//	Sort(arr);
+//	printf("排序结果为：\n");
+//	for (p = arr[0]; p < arr[0] + M; p++)
+//		printf("%s\n", *p);
+//	return 0;
+//}
