@@ -9965,3 +9965,94 @@ int main()
 //		printf("%s\n", p[i]);
 //	return 0;
 //}
+
+// 13 矩形法求定积分的通用函数。
+//float Fsin(float x)
+//{
+//	return sin(x);
+//}
+//float Fcos(float x)
+//{
+//	return cos(x);
+//}
+//float Fexp(float x)
+//{
+//	return exp(x);
+//}
+//float Integral(float(*p)(float), float a, float b, int n)
+//{
+//	int i;
+//	float x, h, s;
+//	h = (b - a) / n;  // 微元宽度
+//	x = a;            // 从积分下限开始，到积分上限为止
+//	s = 0;            // 求和累加器
+//	for (i = 1; i <= n; i++)
+//	{
+//		x = x + h;
+//		s = s + (*p)(x) * h;  // (*p)(x) 返回每段微元开始处的微元高度。 
+//	}
+//	return s;
+//}
+//int main()
+//{
+//	float a1, b1, a2, b2, a3, b3, c, (*p)(float);
+//	int n;
+//	printf("请输入微分矩形个数：");
+//	scanf_s("%d", &n);
+//	printf("请输入a1,b1：");
+//	scanf_s("%f,%f", &a1, &b1);
+//	printf("请输入a2,b2：");
+//	scanf_s("%f,%f", &a2, &b2);
+//	printf("请输入a3,b3：");
+//	scanf_s("%f,%f", &a3, &b3);
+//	p = Fsin;
+//	c = Integral(p, a1, b1, n);
+//	printf("sin积分结果为：%f\n", c);
+//	p = Fcos;
+//	c = Integral(p, a2, b2, n);
+//	printf("cos积分结果为：%f\n", c);
+//	p = Fexp;
+//	c = Integral(p, a3, b3, n);
+//	printf("exp积分结果为：%f\n", c);
+//	return 0;
+//}
+
+// 14 n个数按输入顺序的逆序输出。
+//#define N 30
+//void Reverse(int * p, int n)
+//{
+//	int t, i;
+//	for (i = 0; i < n / 2; i++)
+//	{
+//		t = *(p + i);
+//		*(p + i) = *(p + n - i - 1);
+//		*(p + n - i - 1) = t;
+//	}
+//}
+//int main()
+//{
+//	int num[N];
+//	int* p;
+//	int n;
+//	printf("请输入一共多少个数：");
+//	scanf_s("%d", &n);
+//	for (p = num; p < num + n; p++)
+//	{
+//		scanf_s("%d", p);
+//	}
+//	printf("原数组为：");
+//	for (p = num; p < num + n; p++)
+//	{
+//		printf("%d ", *p);
+//	}
+//	printf("\n");
+//	p = num;
+//	Reverse(p, n);
+//	printf("逆序后数组为：");
+//	for (p = num; p < num + n; p++)
+//	{
+//		printf("%d ", *p);
+//	}
+//	printf("\n");
+//	return 0;
+//}
