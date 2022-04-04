@@ -10165,3 +10165,71 @@ int main()
 	Good(pcourse, pnum, pscore, paver);
 	return 0;
 }
+
+// 16 将字符串中连续整数作为一个数存入数组a中，统计共有多少个整数并输出。
+#define N 50
+void Find_num(char str[N], int a[N])
+{
+	int sum = 0, lab = 0, dig;
+	char* ps = str;
+	int* pa = a;
+	int i = 0, k, e10, m;
+	while(*(ps + i) != '\0')
+	{
+		if ((*(ps + i) >= '0') && (*(ps + i) <= '9'))
+			lab++;
+		else
+		{
+			if (lab > 0)
+			{
+				dig = *(ps + i - 1) - 48;
+				k = 1;
+				while (k < lab)
+				{
+					e10 = 1;
+					for (m = 1; m <= k; m++)
+					{
+						e10 = e10 * 10;
+					}
+					dig = dig + (*(ps + i - 1 - k) - 48) * e10;
+					k++;
+				}
+				*pa = dig;
+				sum++;
+				pa++;
+				lab = 0;
+			}
+		}
+		i++;
+	}
+	if (lab > 0)
+	{
+		dig = *(ps + i - 1) - 48;
+		k = 1;
+		while (k < lab)
+		{
+			e10 = 1;
+			for (m = 1; m <= k; m++)
+				e10 = e10 * 10;
+			dig = dig + (*(ps + i - 1 - k) - 48) * e10;
+			k++;
+		}
+		*pa = dig;
+		sum++;
+		lab = 0;
+	}
+	printf("字符串中有%d个数字，分别是：\n", sum);
+	for (pa = a; pa < a + sum; pa++)
+		printf("%d ", *pa);
+	printf("\n");
+}
+int main()
+{
+	char str[N];
+	int a[N];
+	char* ps = str;
+	printf("请输入字符串：");
+	scanf_s("%s", ps, N);
+	Find_num(str, a);
+	return 0;
+}
