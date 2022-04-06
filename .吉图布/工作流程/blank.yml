@@ -10299,3 +10299,41 @@ int main()
 //	Free(p);
 //	return 0;
 //}
+
+// 20 指向指针的指针对5个字符串排序
+//#define LINEMAX 20
+//void Sort(char** p)
+//{
+//	int i, j;
+//	char* t;
+//	for (i = 0; i < 5; i++)
+//	{
+//		for (j = i + 1; j < 5; j++)
+//		{
+//			if (strcmp(*(p + i), *(p + j)) > 0)
+//			{
+//				t = *(p + i);
+//				*(p + i) = *(p + j);
+//				*(p + j) = t;
+//			}
+//		}
+//	}
+//}
+//int main()
+//{
+//	int i;
+//	char** p, * pstr[5], str[5][LINEMAX];
+//	for (i = 0; i < 5; i++)
+//	{
+//		pstr[i] = str[i];
+//	}
+//	printf("请输入5个字符串：");
+//	for (i = 0; i < 5; i++)
+//		scanf_s("%s", pstr[i],LINEMAX);
+//	p = pstr;
+//	Sort(p);
+//	printf("结果为：\n");
+//	for (i = 0; i < 5; i++)
+//		printf("%s\n", pstr[i]);
+//	return 0;
+//}
