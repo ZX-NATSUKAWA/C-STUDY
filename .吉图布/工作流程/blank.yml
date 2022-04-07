@@ -10337,3 +10337,42 @@ int main()
 //		printf("%s\n", pstr[i]);
 //	return 0;
 //}
+
+// 21 用指向指针的指针对n个整数排序并输出
+//#define N 10
+//void Sort(int** p,int n)
+//{
+//	int i, j, * t;
+//	for (i = 0; i < n; i++)
+//	{
+//		for (j = i + 1; j < n; j++)
+//		{
+//			if (**(p + i) > **(p + j))
+//			{
+//				t = *(p + i);
+//				*(p + i) = *(p + j);
+//				*(p + j) = t;
+//			}
+//		}
+//	}
+//}
+//int main()
+//{
+//	int arr[N];
+//	int* p[N];
+//	int i, n;
+//	printf("请输入数组元素个数：");
+//	scanf_s("%d", &n);
+//	for (i = 0; i < n; i++)
+//		p[i] = &arr[i];
+//	int** pp = p;
+//	printf("请输入数组元素：");
+//	for (i = 0; i < n; i++)
+//		scanf_s("%d", &arr[i]);
+//	Sort(pp, n);
+//	printf("排序后数组为：");
+//	for (i = 0; i < n; i++)
+//		printf("%d ", *p[i]);
+//	printf("\n");
+//	return 0;
+//}
