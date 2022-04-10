@@ -10415,3 +10415,68 @@ int main()
 //		printf("成绩较高的学生为：%s ,他的学号为：%d，成绩为：%6.2f\n", b.name, b.num, b.score);
 //	return 0;
 //}
+
+
+// 9.2 使用结构体数据
+// 9.2.1 定义结构体数组
+// 例
+//struct Person
+//{
+//	char name[20];
+//	int count;
+//}leader[3]={"Li",0,"Zhang",0,"Sun",0};
+//int main()
+//{
+//	int i, j;
+//	char leader_name[20];
+//	for (i = 0; i <= 10; i++)
+//	{
+//		scanf_s("%s", leader_name, 20);
+//		for (j = 0; j < 3; j++)
+//		{
+//			if (strcmp(leader_name, leader[j].name) == 0)
+//				leader[j].count++;
+//		}
+//	}
+//	printf("\n结果为：\n");
+//	for (i = 0; i < 3; i++)
+//		printf("%5s:%d\n", leader[i].name, leader[i].count);
+//	return 0;
+//}
+//   1 定义结构体数组一般形式：
+//     struct 结构体名
+//     { 成员列表
+//     }数组名[长度];
+//   2 初始化：  结构体类型 数组名[长度]={初值列表};
+
+// 9.2.2 结构体数组应用举例
+//struct Student
+//{
+//	int num;
+//	char name[20];
+//	float score;
+//};
+//int main()
+//{
+//	struct Student stu[5] = { {10101,"Zhang",78},{10103,"Wang",98.5},{10106,"Li",86},{10108,"Ling",73.5},{10110,"Sun",100} };
+//	struct Student t;
+//	const int n = 5;
+//	int i, j, k;
+//	printf("顺序为：\n");
+//	for (i = 0; i < n - 1; i++)
+//	{
+//		k = i;
+//		for (j = i + 1; j < n; j++)
+//		{
+//			if (stu[j].score > stu[k].score)
+//				k = j;
+//		}
+//		t = stu[k];
+//		stu[k] = stu[i];
+//		stu[i] = t;
+//	}
+//	for (i = 0; i < n; i++)
+//		printf("%6d %8s %6.2f\n", stu[i].num, stu[i].name, stu[i].score);
+//	printf("\n");
+//	return 0;
+//}
