@@ -10480,3 +10480,51 @@ int main()
 //	printf("\n");
 //	return 0;
 //}
+
+
+// 9.3 结构体指针
+// 9.3.1 指向结构体变量的指针
+//   既可以指向结构体变量，也可以指向结构体数组中的元素。
+//   指针变量的基类型必须与结构体变量类型相同。
+// 例
+//int main()
+//{
+//	struct Student
+//	{
+//		long num;
+//		char name[20];
+//		char sex;
+//		float score;
+//	};
+//	struct Student stu_1;
+//	struct Student* p;
+//	p = &stu_1;
+//	stu_1.num = 10101;
+//	strcpy_s(stu_1.name, 7, "Lin Li");
+//	//strcpy(stu_1.name, "Lin Li");
+//	stu_1. sex = 'M';
+//	stu_1.score = 89.5;
+//	printf("NO. :%ld\nname:%s\nsex:%c\nscore:%5.1f\n", stu_1.num, stu_1.name, stu_1.sex, stu_1.score);
+//	printf("NO. :%ld\nname:%s\nsex:%c\nscore:%5.1f\n", (*p).num, (*p).name, (*p).sex, (*p).score);
+//	printf("NO. :%ld\nname:%s\nsex:%c\nscore:%5.1f\n", p->num, p->name, p->sex, p->score); // 允许->替换上面的写法。
+//	return 0;
+//}
+
+// 9.3.2 指向结构体数组的指针
+// 例
+//struct Student
+//{
+//	int num;
+//	char name[20];
+//	char sex;
+//	int age;
+//};
+//struct Student stu[3] = { {10101,"Li Lin",'M',18},{10102,"Zhang Fang",'M',19},{10104,"Wang Min",'F',20} };
+//int main()
+//{
+//	struct Student* p;
+//	printf("NO.     Name               sex  age\n ");
+//	for (p = stu; p < stu + 3; p++)
+//		printf("%5d %-20s %2c %4d\n", p->num, p->name, p->sex, p->age);
+//	return 0;
+//}
