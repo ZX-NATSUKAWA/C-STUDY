@@ -10574,3 +10574,78 @@ int main()
 //	Print(max(p)); // 传递指针给max函数，函数返回结构体变量给Print函数，输出结果
 //	return 0;
 //}
+
+// 9.4 用指针处理链表
+// 9.4.1 链表
+//   一种动态分配存储空间的数据结构。
+//   有一种头指针变量，指向一个元素。
+//   链表中每一个元素称为结点，包含：实际数据，下一个结点的地址。
+//   最后一个元素称为表尾，地址部分放空指针。
+//   结构体变量最适合建立链表，因为内部可以有不同类型的成员。
+
+// 9.4.2 建立简单静态链表
+// 例：
+//struct Student
+//{
+//	int num;
+//	float score;
+//	struct Student* next;
+//};
+//int main()
+//{
+//	struct Student a, b, c, * head, * p;
+//	a.num = 10101; a.score = 89.5;
+//	b.num = 10103; b.score = 90;
+//	c.num = 10107; c.score = 85;
+//	head = &a;
+//	a.next = &b;
+//	b.next = &c;
+//	c.next = NULL;
+//	p = head;
+//	do
+//	{
+//		printf(" % ld % 5.1f\n", p->num, p->score);
+//		p = p->next;
+//	} while (p != NULL);
+//	return 0;
+//}
+
+// 9.4.3 建立动态链表
+//   是指在程序执行过程中从无到有地建立起一个链表（一个个开辟结点和输入数据）
+// 例
+//#define LEN sizeof(struct Student)
+//struct Student
+//{
+//	long num;
+//	float score;
+//	struct Student* next;
+//};
+//int n;
+//struct Student* creat(void)
+//{
+//	struct Student* head;
+//	struct Student* p1, * p2;
+//	n = 0;
+//	p1 = p2 = (struct Student*)malloc(LEN);
+//	scanf_s("%ld, %f", &p1->num, &p1->score);
+//	head = NULL;
+//	while (p1->num != 0)
+//	{
+//		n = n + 1;
+//		if (n == 1)
+//			head = p1;
+//		else
+//			p2->next = p1;
+//		p2 = p1;
+//		p1 = (struct Student*)malloc(LEN);
+//		scanf_s("%lf,%f", &p1->num, &p1->score);
+//	}p2->next = NULL;
+//	return head;
+//}
+//int main()
+//{
+//	struct Student* pt;
+//	pt = creat();
+//	printf("\nnum:%lf\nscore:%5.1f\n", pt->num, pt->score);  // 输出第一个结点成员值
+//	return 0;
+//}
