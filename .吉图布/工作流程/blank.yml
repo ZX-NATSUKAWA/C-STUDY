@@ -10649,3 +10649,115 @@ int main()
 //	printf("\nnum:%lf\nscore:%5.1f\n", pt->num, pt->score);  // 输出第一个结点成员值
 //	return 0;
 //}
+
+// 9.4.4 输出链表
+//#define LEN sizeof(struct Student)
+//struct Student
+//{
+//	long num;
+//	float score;
+//	struct Student* next;
+//};
+//int n;
+//void Print(struct Student* head)
+//{
+//	struct Student* p;
+//	printf("\n%d个结点的内容为：\n", n);
+//	p = head;
+//	if (head != NULL)
+//	{
+//		do
+//		{
+//			printf("%ld %5.1f\n", p->num, p->score);
+//			p = p->next;
+//		} while (p != NULL);
+//	}
+//}
+
+// 9.4.5 链表删除结点
+//   从动态链表中删除一个结点，不是真正从内存中抹除它，而是让它脱离链表。
+//   判断链表是否是空表，寻找结点，是否找不到需要删除的结点。
+//#define LEN sizeof(struct Student)
+//struct Student
+//{
+//	long num;
+//	float score;
+//	struct Student* next;
+//};
+//int n;
+//struct Student* Del(struct Student* head, long num)
+//{
+//	struct Student* p1, * p2;
+//	if (head == NULL)          // 先判断是不是空表
+//	{
+//		printf("\n是空表\n");  // 是的话，返回信息
+//		return head;
+//	}
+//	p1 = head; // p1指向表头
+//	while (num != p1->num && p1->next != NULL)  // 一个一个往后寻找寻找结点。判断p1是不是结点，且后面还有结点。
+//	{
+//		p2 = p1;         // p2指向上一个结点的地址
+//		p1 = p1->next;   // p1指向下一个结点的地址
+//	}
+//	if (num == p1->num)  // 如果找到了结点
+//	{
+//		if (p1 == head)  // p1是删除的结点的地址
+//			head = p1->next;  // 如果是原表头地址，则新的表头是下一个结点的地址
+//		else
+//			p2->next = p1->next; // 如果不是表头，则将上一个结点内的下一结点地址改为当前结点的下一结点地址。
+//		printf("删除：%ld\n", num);
+//		n = n - 1;  // 结点数减一
+//	}
+//	else         // 找不到要删除的结点
+//		printf("%ld结点未找到\n");
+//	return head;
+//}
+
+// 9.4.6 链表插入结点
+//   依据某一标准，找到要插入的位置。
+//   将要插入结点内下一结点地址改成上一个结点内的下一节点地址。
+//   将上一个结点内的下一节点地址改成要插入结点的位置。
+//#define LEN sizeof(struct Student)
+//struct Student
+//{
+//	long num;
+//	float score;
+//	struct Student* next;
+//};
+//int n;
+//struct Student* Insert(struct Student* head, struct Student* stud)  // *stud是要插入结点的地址
+//{
+//	struct Student* p0, * p1, * p2;
+//	p1 = head;  
+//	p0 = stud;
+//	if (head == NULL)  // 如果是空表
+//	{
+//		head = p0;     // 则要插入结点是唯一结点 表头地址是stud
+//		p0->next = NULL;  // 下一结点地址为空
+//	}
+//	else               // 如果不是空表
+//	{
+//		while ((p0->num > p1->num) && (p1->next != NULL)) // stud内的num比上一结点的num大
+//		{
+//			p2 = p1;       // p2指向上一结点地址
+//			p1 = p1->next; // p1指向下一结点地址
+//		}
+//		if (p0->num <= p1->num) // stud内的num比下一结点的num小或相等 则找到要插入的位置
+//		{
+//			if (head == p1)     // 如果该位置是表头
+//				head = p0;      // 首地址为插入结点的地址
+//			else  // 不是表头
+//			{
+//				p2->next = p0;  // 上一结点内的下一结点地址为插入结点的地址
+//				p0->next = p1;  //  插入结点内下一结点的地址，为原下一结点的地址
+//			}
+//		}
+//		else  // 否则 插入位置为表尾
+//		{
+//			p1->next = p0;
+//			p0->next = NULL;
+//		}
+//	}
+//	n = n + 1; // 结点数加一
+//	return head;
+//}
