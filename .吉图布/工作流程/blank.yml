@@ -10761,3 +10761,62 @@ int main()
 //	n = n + 1; // 结点数加一
 //	return head;
 //}
+
+// 9.5 共用体
+// 9.5.1 什么是共用体类型
+//   用同一段内存单元存放不同类型的变量。它们都从同一地址开始。
+//   一般形式：
+//   union 共用体名称
+//   {成员列表
+//    }变量列表；
+//   共用体变量的大小是最大成员的长度，而结构体变量的大小是所有成员大小的总和。
+
+// 9.5.2 引用共用体变量的方式
+//   先定义共用体变量，再应用共用体变量的成员，不能引用共用体变量。
+
+// 9.5.3 共用体类型数据的特点
+//   1 同一个内存段可以用来存放几种不同类型的成员，但在每一瞬间只能存放其中一个成员。
+//   2 可以对共用体变量初始化，但初始化只能有一个常量。（不能一次初始化多个成员）
+//   3 共用体变量中起作用的成员是最近一次被赋值的成员，且赋值后原有变量存储单元中的值就被取代。
+//   4 共用体变量的地址和各成员的地址相同
+//   5 不能对共用体变量名赋值，也不能但用共用体变量名对其他变量赋值。
+//   6 可以用共用体变量或共用体指针作函数参数
+//   7 共用体类型可以作结构体成员，也可以定义共用体数组。
+// 例
+//struct
+//{
+//	int num;
+//	char name[10];
+//	char sex;
+//	char job;
+//	union
+//	{
+//		int clas;
+//		char position[10];
+//	}category;
+//}person[2];
+//int main()
+//{
+//	int i;
+//	for (i = 0; i < 2; i++)
+//	{
+//		printf("请输入个人信息：\n");
+//		scanf_s("%d %s %c %c", &person[i].num, &person[i].name, 10, &person[i].sex, &person[i].job);
+//		if (person[i].job == 's')
+//			scanf_s("%d", &person[i].category.clas);
+//		else if (person[i].job == 't')
+//			scanf_s("%s", person[i].category.position, 10);
+//		else
+//			printf("输入错误！\n");
+//	}
+//	printf("\n");
+//	printf("NO.   name          sex   job    class/position\n");
+//	for (i = 0; i < 2; i++)
+//	{
+//		if(person[i].job=='s')
+//			printf("%-6d %-10s %-4c %-4c %-4d\n", person[i].num, person[i].name, person[i].sex, person[i].job,person[i].category.clas);
+//		else
+//			printf("%-6d %-10s %-4c %-4c %-10s\n", person[i].num, person[i].name, person[i].sex, person[i].job, person[i].category.position);
+//	}
+//	return 0;
+//}
