@@ -10820,3 +10820,54 @@ int main()
 //	}
 //	return 0;
 //}
+
+
+// 9.6 枚举类型
+//   如果一个变量只有几种可能的值，则可以定义为枚举类型。
+//   声明枚举类型用enum开头，如： enum Weekday{sun,mon,tue,wed,thu.fri,sat};
+//   定义枚举变量： enum Weekday workday,weekend;
+//   wordkday和weekend被定义为枚举变量，花括号中的被称为枚举元素或枚举常量。
+//int main()
+//{
+//	enum Color{red,yellow,blue,white,black};
+//	enum Color i, j, k, pri;
+//	int n, loop;
+//	n = 0;
+//	for (i = red; i <= black; i++)
+//	{
+//		for (j = red; j <= black; j++)
+//		{
+//			if (i != j)
+//			{
+//				for(k=red;k<=black;k++)
+//					if ((k != i) && (k != j))
+//					{
+//						n = n + 1;
+//						printf("%-4d", n);
+//						for (loop = 1; loop <= 3; loop++)
+//						{
+//							switch (loop)
+//							{
+//							case 1:pri = i; break;
+//							case 2:pri = j; break;
+//							case 3:pri = k; break;
+//							default:break;
+//							}
+//							switch (pri)
+//							{
+//							case red:printf("%-10s", "red"); break;
+//							case yellow:printf("%-10s", "yellow"); break;
+//							case blue:printf("%-10s", "blue"); break;
+//							case white:printf("%-10s", "white"); break;
+//							case black:printf("%-10s", "black"); break;
+//							default:break;
+//							}
+//						}
+//						printf("\n");
+//					}
+//			}
+//		}
+//	}
+//	printf("\n总数为：%d\n", n);
+//	return 0;
+//}
