@@ -10871,3 +10871,34 @@ int main()
 //	printf("\n总数为：%d\n", n);
 //	return 0;
 //}
+
+
+// 9.7 用typedef声明新类型名
+//   可以用typedef指定新的类型名来替代已有的类型名。
+//   1 简单地用一个新的类型名代替原有类型名
+//     如 typedef int Integer  用Integer替代int，作用相同。
+//   2 命名一个简单的类型名代替复杂的类型表示
+//     如 替代结构体类型、共用体类型、枚举类型、指针类型、数组类型。
+//      1） 替代结构体类型
+//          typedef struct
+//			{
+//				int month;
+//				int day;
+//				int year;
+//			 }Date;         // 将结构体类型定义为Date
+//      2） 替代数组类型
+//          typedef int Num[10];
+//          Num a;
+//      3） 替代指针类型
+//			typedef char* String;
+//			String p, s[10];
+//      4） 替代指向函数的指针类型
+//			typedef int(*Pointer)();
+//			Pointer p1, p2;
+//    按定义变量方式，把变量名换成新类型名，并在最前面加typedef
+//    特点：
+//         只是对已存在的类型名换个名字，没有创造新类型。
+//         声明一些较长的类型名，使变成更为易懂、方便。
+//         typedef类似#define，前者在编译阶段作用，类似定义变量；后者在预编译阶段作用，只能作简单的字符替换。
+//         当不同源文件用到同一类型数据时，常用typedef声明一些数据类型。将所有typedef声明单独放在一个头文件中，再由#include统一引用。
+//         使用typedef便于程序的通用与移植。
