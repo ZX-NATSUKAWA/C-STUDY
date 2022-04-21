@@ -11083,3 +11083,244 @@ int main()
 //	}
 //	return 0;
 //}
+
+// 5 链表的建立、输出、删除、插入
+//#define LEN sizeof(struct Student)
+//int n = 0;
+//struct Student
+//{
+//	long num;
+//	float score;
+//	struct Student* next;
+//};
+//struct Student* Creat()
+//{
+//	struct Student* head;
+//	struct Student* p1, * p2;
+//	n = 0;
+//	p1 = p2 = (struct Student*)malloc(LEN);
+//	scanf_s("%ld,%f", &p1->num, &p1->score);
+//	head = NULL;
+//	while (p1->num != 0)
+//	{
+//		n = n + 1;
+//		if (n == 1)
+//			head = p1;
+//		else
+//			p2->next = p1;
+//		p2 = p1;
+//		p1 = (struct Student*)malloc(LEN);
+//		scanf_s("%ld,%f", &p1->num, &p1->score);
+//	}
+//	p2->next = NULL;
+//	return head;
+//}
+//struct Student* Del(struct Student* head, long num)
+//{
+//	struct Student* p1, * p2;
+//	if (head == NULL)
+//	{
+//		printf("\n是空表!\n");
+//		return head;
+//	}
+//	p1 = head;
+//	while (num != p1->num && p1->next != NULL)
+//	{
+//		p2 = p1;
+//		p1 = p1->next;
+//	}
+//	if (num == p1->num)
+//	{
+//		if (p1 == head)
+//			head = p1->next;
+//		else
+//			p2->next = p1->next;
+//		printf("delete:%ld\n", num);
+//		n = n - 1;
+//	}
+//	else
+//		printf("未找到要删除的链表！\n");
+//	return head;
+//}
+//struct Student* Insert(struct Student* head, struct Student* stud)
+//{
+//	struct Student* p0, * p1, * p2;
+//	p1 = head;
+//	p0 = stud;
+//	if (head == NULL)
+//	{
+//		head = p0; 
+//		p0->next = NULL;
+//	}
+//	else
+//	{
+//		while ((p0->num > p1->num) && (p1->next != NULL))
+//		{
+//			p2 = p1;
+//			p1 = p1->next;
+//		}
+//	}
+//	if (p0->num <= p1->num)
+//	{
+//		if (head == p1)
+//			head = p0;
+//		else
+//		{
+//			p2->next = p0;
+//			p0->next = p1;
+//		}
+//	}
+//	else
+//	{
+//		p1->next = p0;
+//		p0->next = NULL;
+//	}
+//	n = n + 1;
+//	return head;
+//}
+//void Print(struct Student* head)
+//{
+//	struct Student* p;
+//	printf("\n第%d结点数据为：\n", n);
+//	p = head;
+//	if(head!=NULL)
+//		do {
+//			printf("%ld %5.1f\n", p->num, p->score);
+//			p = p->next;
+//		} while (p != NULL);
+//}
+//void J_print(struct Student*head)
+//{
+//	int j = 0;
+//	printf("是否需要打印： 1.是 0.否");
+//	scanf_s("%d", &j);
+//	if (j)
+//		Print(head);
+//}
+//int main()
+//{
+//	struct Student* head, * stu;
+//	long del_num;
+//	printf("请输入信息：\n");
+//	head = Creat();
+//	Print(head);
+//	int a;
+//	scanf_s("%d", &a);
+//	printf("请输入要进行的操作： 1.删除结点  2.插入结点");
+//	switch (a)
+//	{
+//	case 1:
+//		printf("请输入要删除的结点：");
+//		scanf_s("%ld", &del_num);
+//		while (del_num != 0)
+//		{
+//			head = Del(head, del_num);
+//			J_print(head);
+//			printf("请输入要删除的结点：(如结束删除请输入0)");
+//			scanf_s("%ld", &del_num);
+//		}
+//		break;
+//	case 2:
+//		printf("请输入要添加的结点：");
+//		stu = (struct Student*)malloc(LEN);
+//		scanf_s("%ld,%f", &stu->num, &stu->score);
+//		while (stu->num != 0)
+//		{
+//			head = Insert(head, stu);
+//			J_print(head);
+//			printf("输入要插入的新结点数据：(如结束删除请输入0)");
+//			stu = (struct Student*)malloc(LEN);
+//			scanf_s("%ld,%f", &stu->num, &stu->score);
+//		}
+//		break;
+//	default:
+//		printf("输入错误！\n");
+//		break;
+//	}
+//	return 0;
+//}
+
+//6 合并两个链表，按学号升序排列
+//#define LEN sizeof(struct Student)
+//struct Student
+//{
+//	long num;
+//	int score;
+//	struct Student* next;
+//};
+//struct Student lista, listb;
+//int n, sum = 0;
+//struct Student* Creat(void)
+//{
+//	struct Student* p1, * p2, * head;
+//	n = 0;
+//	p1 = p2 = (struct Student*)malloc(LEN);
+//	printf("请输入学生学号和成绩：(输入0以终止录入)\n");
+//	scanf_s("%ld,%d", &p1->num, &p1->score);
+//	head = NULL;
+//	while (p1->num != 0)
+//	{
+//		n = n + 1;
+//		if (n == 1)
+//			head = p1;
+//		else
+//			p2->next = p1;
+//		p2 = p1;
+//		p1 = (struct Student*)malloc(LEN);
+//		scanf_s("%ld,%d", &p1->num, &p1->score);
+//	}
+//	p2->next = NULL;
+//	return head;
+//}
+//struct Student* Insert(struct Student* ah, struct Student* bh)
+//{
+//	struct Student* pa1, * pa2, * pb1, * pb2;
+//	pa2 = pa1 = ah;
+//	pb2 = pb1 = bh;
+//	do
+//	{
+//		while ((pb1->num > pa1->num) && (pa1->next != NULL))
+//		{
+//			pa2 = pa1;
+//			pa1 = pa1->next;
+//		}
+//		if (pb1->num <= pa1->num)
+//		{
+//			if (ah = bh)
+//				ah = pb1;
+//			else
+//				pa2->next = pb1;
+//			pb1 = pb1->next;
+//			pb2->next = pa1;
+//			pa2 = pb2;
+//			pb2 = pb1;
+//		}
+//	} while ((pa1->next != NULL) || (pa1 == NULL && pb1 != NULL));
+//	if ((pb1 != NULL) && (pb1->num > pa1->num) && (pa1->next == NULL))
+//		pa1->next = pb1;
+//	return ah;
+//}
+//void Print(struct Student* head)
+//{
+//	struct Student* p;
+//	p = head;
+//	if (p != NULL)
+//		do
+//		{
+//			printf("%ld,%d\n", p->num, p->score);
+//			p = p->next;
+//		} while (p != NULL);
+//}
+//int main()
+//{
+//	struct Student* ahead, * bhead, * abh;
+//	printf("请输入链表a的内容：\n");
+//	ahead = Creat();
+//	sum = sum + n;
+//	printf("请输入链表b的内容：\n");
+//	bhead = Creat();
+//	sum = sum + n;
+//	abh = Insert(ahead, bhead);
+//	Print(abh);
+//	return 0;
+//}
