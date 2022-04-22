@@ -11324,3 +11324,81 @@ int main()
 //	Print(abh);
 //	return 0;
 //}
+
+// 7 有两个链表，从a表中删去与b表学号相同的结点
+//#define LA 4
+//#define LB 5
+//struct Student
+//{
+//	int num;
+//	char name[8];
+//	struct Student* next;
+//}a[LA],b[LB];
+//void Delete(struct Student* head1, struct Student* head2)
+//{
+//	struct Student* p1, * p2, * p = NULL;
+//	p1 = head1;
+//	while (p1 != NULL)
+//	{
+//		p2 = head2;
+//		while ((p1->num != p2->num) && (p2->next != NULL))
+//		{
+//			p2 = p2->next;
+//		}
+//		if (p1->num == p2->num)
+//		{
+//			if (p1 == head1)
+//				head1 = p1->next;
+//			else
+//			{
+//				p->next = p1->next;
+//				p1 = p1->next;
+//			}
+//		}
+//		else
+//		{
+//			p = p1;
+//			p1 = p1->next;
+//		}
+//	}
+//}
+//int main()
+//{
+//	struct Student a[LA] = { {101,"Wang"},{102,"Li"},{105,"Zhang"},{106,"Wei"} };
+//	struct Student b[LB] = { {103,"Zhang"},{104,"Ma"},{105,"Chen"},{107,"Guo"},{108,"Liu"} };
+//	struct Student* p, * p1, * p2, * head1, * head2;
+//	head1 = a;
+//	head2 = b;
+//	printf("list A: \n");
+//	int i;
+//	for (p1 = head1, i = 1; i <= LA; i++)
+//	{
+//		if (i < LA)
+//			p1->next = a + i;
+//		else
+//			p1->next = NULL;
+//		printf("%4d%8s\n", p1->num, p1->name);
+//		if (i < LA)
+//			p1 = p1->next;
+//	}
+//	printf("list B: \n");
+//	for (p2 = head2, i = 1; i <= LB; i++)
+//	{
+//		if (i < LB)
+//			p2->next = b + i;
+//		else
+//			p2->next = NULL;
+//		printf("%4d%8s\n", p2->num, p2->name);
+//		if (i < LB)
+//			p2 = p2->next;
+//	}
+//	Delete(head1, head2);
+//	printf("\n result: \n");
+//	p = head1;
+//	while (p != NULL)
+//	{
+//		printf("%4d %7s\n", p->num, p->name);
+//		p = p->next;
+//	}
+//	return 0;
+//}
