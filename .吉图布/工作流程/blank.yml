@@ -11402,3 +11402,89 @@ int main()
 //	}
 //	return 0;
 //}
+
+#define LEN sizeof(struct Student)
+//struct Student
+//{
+//	char num[6];
+//	char name[8];
+//	char sex[2];
+//	int age;
+//	struct Student* next;
+//}stu[10];
+//int main()
+//{
+//	struct Student* p, * pt, * head;
+//	int i, length, iage, flag = 1;
+//	int find = 0;
+//	while (flag == 1)
+//	{
+//		printf("输入链表长度(<10)：\n");
+//		scanf_s("%d", &length);
+//		if (length < 10)
+//			flag = 0;
+//	}
+//	// 创建链表
+//	for (i = 0; i < length; i++)
+//	{
+//		p = (struct Student*)malloc(LEN);
+//		if (i == 0)
+//			head = pt = p;
+//		else
+//			pt->next = p;
+//		pt = p;
+//		printf("NO.:");
+//		scanf_s("%s", p->num, 6);
+//		printf("name:");
+//		scanf_s("%s", p->name,8);
+//		printf("sex:");
+//		scanf_s("%s", p->sex,2);
+//		printf("age:");
+//		scanf_s("%d", &p->age);
+//	}
+//	p->next = NULL;
+//	p = head;
+//	printf("\n NO. name sex age\n");
+//	while (p != NULL)
+//	{
+//		printf("%4s%8s%6s%6d\n", p->num, p->name, p->sex, p->age);
+//		p = p->next;
+//	}
+//	// 删除结点
+//	printf("input age:");
+//	scanf_s("%d", &iage);
+//	pt = head;
+//	p = pt;
+//	if (pt->age == iage)
+//	{
+//		p = pt->next;
+//		head = pt = p;
+//		find = 1;
+//	}
+//	else
+//		pt = pt->next;
+//	while (pt != NULL)
+//	{
+//		if (pt->age == iage)
+//		{
+//			p->next = pt->next;
+//			find = 1;
+//		}
+//		else
+//		{
+//			p = pt;
+//			pt = pt->next;
+//		}
+//	}
+//	if (!find)
+//		printf("未找到%d", iage);
+//	p = head;
+//	printf("\n NO.  name  sex  age\n");
+//	while (p != NULL)
+//	{
+//		printf("%4s%8s", p->num, p->name);
+//		printf("%6s%6d\n", p->sex, p->age);
+//		p = p->next;
+//	}
+//	return 0;
+//}
