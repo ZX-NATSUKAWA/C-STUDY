@@ -11549,3 +11549,68 @@ int main()
 //    将文件指针指向的文件关闭，此后fp不再指向该文件。
 //    如果不关闭文件，可能由于数据为充满缓冲区时突遇程序结束导致缺失该部分文件。
 //    成功关闭返回0，否则返回EOF(-1)
+
+
+// 10.3 顺序读写数据文件
+//    对文件读写数据的顺序和数据在文件中的物理顺序一致。
+// 10.3.1 向文件读写字符
+//    fgetc(fp)     从fp指向的文件读入一个字符  读成功返回该字符，失败返回EOF（结束标志）
+//    foutc(ch,fp)  吧字符ch写到fp指向的文件中  输出成功返回输出字符，失败返回EOF。
+// 例：输入字符并逐个送至磁盘，知道输入#结束。
+//int main()
+//{
+//	FILE* fp;
+//	errno_t err;
+//	char ch, filename[10];
+//	printf("请输入文件名：");
+//	scanf_s("%s", filename, 10);
+//	ch = getchar(); // 用来吸收上一个输入的回车符。
+//	if ((err = fopen_s(&fp,filename, "w")) != 0)
+//	{
+//		printf("无法打开文件！\n");
+//		exit(0);   // 使程序终止。
+//	}
+//	printf("请输入一个准备存储到磁盘的字符串（以#结束）：");
+//	ch = getchar();
+//	while (ch != '#')
+//	{
+//		fputc(ch, fp);
+//		putchar(ch);
+//		ch = getchar();
+//	}
+//	fclose(fp);
+//	putchar(10);  // 向屏幕输出一个换行符
+//	return 0;
+//}
+// 例：将一个磁盘文件复制到另一个磁盘文件中。
+//int main()
+//{
+//	FILE* in, * out;
+//	char ch, infile[10], outfile[10];
+//	printf("输入读入文件的名字：");
+//	scanf_s("%s", outfile, 10);
+//	printf("输入输入文件的名字：");
+//	scanf_s("%s", infile, 10);
+//	errno_t err;
+//	if ((err = fopen_s(&in, infile, "r")) != 0)
+//	{
+//		printf("打开输入文件失败！\n");
+//		exit(0);
+//	}
+//	if ((err = fopen_s(&out, outfile, "w")) != 0)
+//	{
+//		printf("打开输出文件失败！\n");
+//		exit(0);
+//	}
+//	ch = fgetc(in);
+//	while (!feof(in))
+//	{
+//		fputc(ch, out);  // 写入一个字符
+//		putchar(ch);     // 屏幕显示该字符
+//		ch = fgetc(in);  // 读入下一个字符
+//	}
+//	putchar(10);
+//	fclose(in);
+//	fclose(out);
+//	return 0;
+//}
