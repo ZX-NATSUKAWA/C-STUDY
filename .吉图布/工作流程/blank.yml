@@ -11614,3 +11614,63 @@ int main()
 //	fclose(out);
 //	return 0;
 //}
+
+// 10.3.2 向文件读写一个字符串
+//    C语言允许通过fgets和fputs一次性读写一个字符串。
+//	  fgets(str,n,fp);  // 从fp指向的文件读入一个长度为（n-1）的字符串，存放到字符数组str中。  成功返回str，失败返回NULL
+//	  fputs(str,fp);    // 把str指向的字符串写到文件指针变量fp指向的文件。     成功返回0，失败返回非0
+// 例 从键盘读入若干个字符串，按字母大小顺序排列，将排序后的字符串送至磁盘文件保存
+//int main()
+//{
+//	FILE* fp;
+//	char str[3][10], temp[10];
+//	int i, j, k, n = 3;
+//	printf("请输入字符串：\n");
+//	for (i = 0; i < n; i++)
+//	{
+//		gets_s(str[i]);
+//	}
+//	for (i = 0; i < n - 1; i++)
+//	{
+//		k = i;
+//		for (j = i + 1; j < n; j++)
+//		{
+//			if (strcmp(str[k], str[j]) > 0)
+//				k = j;
+//		}
+//		if (k != i)
+//		{
+//			strcpy_s(temp, 10, str[i]);
+//			strcpy_s(str[i], 10, str[k]);
+//			strcpy_s(str[k], 10, temp);
+//		}
+//	}
+//	errno_t err;
+//	if ((err = fopen_s(&fp,"C:\\CC\\string.dat", "w")) != 0)  //  \\ 转义表示“\”
+//	{
+//		printf("找不到该文件！\n");
+//		exit(0);
+//	}
+//	printf("\n排序后：\n");
+//	for (i = 0; i < n; i++)
+//	{
+//		fputs(str[i], fp);
+//		fputs("\n", fp);
+//		printf("%s\n", str[i]);
+//	}
+//	i = 0;  // 读回字符串
+//	while (fgets(str[i], 10, fp) != NULL)
+//	{
+//		printf("%s", str[i]);
+//		i++;
+//	}
+//	fclose(fp);
+//	return 0;
+//}
+
+// 10.3.3 用格式化方式读写文本文件
+//     printf scanf_s是以格式化方式读写终端信息。
+//     fprintf fscanf_s则是以格式化方式读写文件信息。
+//     fprintf(文件指针，格式字符串，输出列表);
+//     fscanf_s(文件指针，格式字符串，输入列表);
+//     特点： 使用方便，容易理解。 但是存在ASCII码与二进制相互转换，比较花时间。 在磁盘与内存频繁交换数据时最好别用。
