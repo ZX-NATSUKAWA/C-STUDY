@@ -11674,3 +11674,48 @@ int main()
 //     fprintf(文件指针，格式字符串，输出列表);
 //     fscanf_s(文件指针，格式字符串，输入列表);
 //     特点： 使用方便，容易理解。 但是存在ASCII码与二进制相互转换，比较花时间。 在磁盘与内存频繁交换数据时最好别用。
+
+// 10.3.4 用二进制方式向文件读写一组数据
+//    程序中常需要一次输入输出一组数据（如数组或结构体）
+//    C语言允许用fread从文件中读一个数据块  fraed(buffer,size,count,fp);
+//             用fwrite向文件写一个数据块。 fwrite(buffer,size,count,fp);
+//    buffer是从文件读入数据的存储区的地址，size单位数据的字节数，count要读写的数据项数，fp文件指针。
+//    函数运行成功返回count的值。
+// 例 从键盘输入10个学生数据，存到磁盘文件中。
+//#define SIZE 10
+//struct Student_type
+//{
+//	char name[10];
+//	int num;
+//	int age;
+//	char addr[15];
+//}stud[SIZE];
+//void Save()  // 存数据
+//{
+//	FILE* fp;  // 初始化
+//	int i;
+//	errno_t err;
+//	if ((err = fopen_s(&fp, "stu.dat", "wb")) != 0)  // 打开文件
+//	{
+//		printf("未找到指定文件！\n");
+//		exit(0);
+//	}
+//	for (i = 0; i < SIZE; i++)  // 写入数据
+//	{
+//		if (fwrite(&stud[i], sizeof(struct Student_type), 1, fp) != 1)
+//			printf("写入文件失败！\n");
+//	}
+//	fclose(fp);  // 关闭文件
+//}
+//int main()
+//{
+//	int i;
+//	printf("请输入十个学生的数据：\n");
+//	for (i = 0; i < SIZE; i++)
+//	{
+//		scanf_s("%s%d%d%s", stud[i].name, 10, &stud[i].num, &stud[i].age, &stud[i].addr, 15);
+//	}
+//	Save();
+//	return 0;
+//}
+//  注意： 读写方式要一致。（二进制对应二进制，文本对应文本，最好不要交叉使用）
