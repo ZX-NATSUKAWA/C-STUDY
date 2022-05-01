@@ -11758,3 +11758,44 @@ int main()
 //	fclose(fp2);
 //	return 0;
 //}
+
+// 10.4.2 随机读写
+//    利用rewind和fseek实现随机读写
+// 例：磁盘文件上有10个学生数据，将第1，3，5，7，9个学生的数据输入计算机，并打印。
+//struct Student
+//{
+//	char name[10];
+//	int num;
+//	int age;
+//	char addr[15];
+//}stud[10];
+//int main()
+//{
+//	int i;
+//	FILE* fp;
+//	errno_t err;
+//	if ((err = fopen_s(&fp, "stu.dat", "rb")) != 0)
+//	{
+//		printf("无法打开文件！\n");
+//		exit(0);
+//	}
+//	for (i = 0; i < 10; i += 2)
+//	{
+//		fseek(fp, i * sizeof(struct Student), 0);
+//		fread(&stud[i], sizeof(struct Student), 1, fp);
+//		printf("%-10s %4d %4d %-15s\n", stud[i].name, stud[i].num, stud[i].age, stud[i].addr);
+//	}
+//	fclose(fp);
+//	return 0;
+//}
+
+
+// 10.5 文件读写的出错检测
+//    库函数提供一些检查输入输出函数调用可能出现的错误。
+//    1 ferror函数
+//      调用形式：  ferror(fp);
+//      返回0表示未出错，返回非零值表示出错。
+//      对同一个文件每次调用输入输出函数都会产生新的ferror返回值，因此调用后应立即检查。
+//    2 clearerr函数
+//      调用形式：   clearerr(fp);
+//      使文件出错标志和文件结束标志置0。 只要出现文件读写出错标志，就会一直保留。所以需要收到置0（clearerr或rewind），以便下次检测。
