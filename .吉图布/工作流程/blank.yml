@@ -11799,3 +11799,92 @@ int main()
 //    2 clearerr函数
 //      调用形式：   clearerr(fp);
 //      使文件出错标志和文件结束标志置0。 只要出现文件读写出错标志，就会一直保留。所以需要收到置0（clearerr或rewind），以便下次检测。
+
+
+// test
+// 1 从键盘输入一个字符串，将其中小写字母全转换成大写字母，保存至磁盘文件test。输入“！”结束输入。
+//int main()
+//{
+//	char arr[20];
+//	printf("请输入一个字符串（以！结尾）：");
+//	scanf_s("%s", &arr, 20);
+//	int i = 0;
+//	FILE* fp;
+//	errno_t err;
+//	if ((err = fopen_s(&fp, "test", "w")) != 0)
+//	{
+//		printf("打开文件失败！\n");
+//		exit(0);
+//	}
+//	while (arr[i] != '!')
+//	{
+//		if (arr[i] >= 'a' && arr[i] <= 'z')
+//			arr[i] = arr[i] - 32;
+//		fputc(arr[i], fp);
+//		i++;
+//	}
+//	fclose(fp);
+//	err = fopen_s(&fp, "test", "r");
+//	fgets(arr, strlen(arr) + 1, fp);
+//	printf("%s", arr);
+//	fclose(fp);
+//	return 0;
+//}
+
+// 2 将两个磁盘文件中的信息按字母顺序排序并合并，存到新的磁盘文件中。
+//#define N 100
+//int main()
+//{
+//	FILE* fp1, * fp2, *fp3;
+//	errno_t err1, err2, err3;
+//	char c[N], ch, t;
+//	int i, j, n, i1;
+//	if ((err1 = fopen_s(&fp1, "a", "r")) != 0)
+//	{
+//		printf("打开文件失败！\n");
+//		exit(0);
+//	}
+//	printf("读出文件a内容：");
+//	for (i = 0; (ch = fgetc(fp1)) != EOF; i++)
+//	{
+//		c[i] = ch;
+//		putchar(c[i]);
+//	}
+//	fclose(fp1);
+//	i1 = i;
+//	if ((err2 = fopen_s(&fp2, "a", "r")) != 0)
+//	{
+//		printf("打开文件失败！\n");
+//		exit(0);
+//	}
+//	printf("读出文件b内容：");
+//	for (i=i1; (ch = fgetc(fp2)) != EOF; i++)
+//	{
+//		c[i] = ch;
+//		putchar(c[i]);
+//	}
+//	fclose(fp2);
+//	n = i;
+//	for (i = 0; i < n; i++)
+//	{
+//		for (j = i + 1; j < n; j++)
+//		{
+//			if (c[i] > c[j])
+//			{
+//				t = c[i];
+//				c[i] = c[j];
+//				c[j] = t;
+//			}
+//		}
+//	}
+//	printf("\n文件c:\n");
+//	err3 = fopen_s(&fp3, "c", "w");
+//	for (i = 0; i < n; i++)
+//	{
+//		putc(c[i], fp3);
+//		putchar(c[i]);
+//	}
+//	printf("\n");
+//	fclose(fp3);
+//	return 0;
+//}
