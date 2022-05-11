@@ -12472,3 +12472,91 @@ int main()
 //      （5）位段长度不能超过存储单元长度，也不能定义位段数组。
 //      （6）位段中的数可以用整型格式符输出。
 //      （7）位段可以在数值表达式中引用，会被系统自动转换成整型数。
+
+
+// 案例
+// 计算个人所得税
+#define SIZE 9  // 税率档数
+typedef struct tax_st
+{
+	long left;
+	long right;
+	int tax;
+	long deduct;
+}TAX_LIST;
+void Acceptdata(TAX_LIST tax_list[])
+{
+	int i;
+	for (i = 0; i < SIZE; i++)
+	{
+		printf("请输入数据：");
+		scanf_s("%ld", &tax_list[i].left);
+		scanf_s("%ld", &tax_list[i].right);
+		scanf_s("%ld", &tax_list[i].tax);
+		scanf_s("%ld", &tax_list[i].deduct);
+	}
+}
+int main()
+{
+	FILE* fp;
+	TAX_LIST tax_list[SIZE];
+	errno_t err;
+	if ((err = fopen_s(&fp, "d:\\TAX.din", "wb")) != 0)
+	{
+		printf("打开文件失败！\n");
+		exit(1);
+	}
+	Acceptdata(tax_list);
+	if ((fwrite(tax_list, sizeof(TAX_LIST), SIZE, fp)) != SIZE)
+	{
+		printf("写入文件失败！\n");
+	}
+	fclose(fp);
+	return 0;
+}
+// 计算所得税额
+void Disp(TAX_LIST tax_list[])
+{
+	double salary, s, tax = 0, ff;
+	int i;
+	printf("请输入税前扣除数：");
+	scanf_s("%lf", &ff);
+	printf("请输入月收入：");
+	scanf_s("%lf", &salary);
+	if (salary >= 0)
+	{
+		s = salary - ff;
+		if (s < 0)
+			tax = 0;
+		else
+		{
+			for (i = 0; i < SIZE - 1; i++)
+			{
+				if (s < tax_list[i].right && s >= tax_list[i].left)
+					tax = s * tax_list[i].tax / 100.0 - tax_list[i].deduct;
+			}
+			if (s >= tax_list[SIZE - 1].left)
+				tax = s * tax_list[SIZE-1].tax / 100.0 - tax_list[SIZE - 1].deduct;
+		}
+	}
+	printf("个人应纳税额为%.2lf\n", tax);
+}
+int main()
+{
+	FILE* fp;
+	TAX_LIST tax_list[SIZE];
+	errno_t err;
+	if ((err = fopen_s(&fp, "d:\\TAX.din", "rb")) != 0)
+	{
+		printf("打开文件失败！\n");
+		exit(1);
+	}
+	if (fread(tax_list, sizeof(TAX_LIST), SIZE, fp) != SIZE)
+	{
+		printf("读文件失败！\n");
+		exit(1);
+	}
+	Disp(tax_list);
+	fclose(fp);
+	return 0;
+}
