@@ -12868,3 +12868,192 @@ int main()
 	} while (i != 0);
 	return 0;
 }
+
+// 上题文档版
+#define SIZE 20
+typedef struct GuestList
+{
+	char name[8];
+	int sum;
+	char time[10];
+	int number;
+	List* next;
+}List, * Pointer;
+int count = 0;
+void Insert(Pointer *head)
+{
+	int in_number;
+	Pointer p, q, r;
+	printf("请输入编号：");
+	scanf_s("%d", &in_number);
+	p = q = *head;
+	while (p != NULL)
+	{
+		if (p->number == in_number)
+		{
+			printf("已有相同编号：");
+			return;
+		}
+		else
+		{
+			q = p;
+			p = p->next;
+		}
+	}
+	r = (Pointer)malloc(sizeof(List));  // 开辟下一个结点的空间
+	r->next = NULL;
+	if (r == NULL)
+	{
+		printf("分配空间失败！\n");
+		return;
+	}
+	if (q == NULL)   // 原表为空表
+		*head = r;   // r对应结点为头元素
+	else
+		q->next = r; // r对应结点为表尾
+	r->number = in_number;
+	printf("姓名：");
+	scanf_s("%s", r->name, 8);
+	printf("人数：");
+	scanf_s("%d", r->sum);
+	printf("预定时间：");
+	scanf_s("%s", r->time, 10);
+	count++;
+}
+void Search(Pointer head)
+{
+	int flag = 1;
+	int number;
+	Pointer p;
+	printf("请输入要查找数据的编号：");
+	scanf_s("%d", &number);
+	p = head;
+	while (p != NULL && flag)
+	{
+		if (p->number == number)
+		{
+			printf("姓名：%s", p->name);
+			printf("人数：%d", p->sum);
+			printf("预定时间：%s", p->time);
+			flag = 0;
+		}
+		else
+			p = p->next;
+	}
+	if (flag)
+		printf("未找到指定数据！\n");
+}
+void Update(Pointer head)
+{
+	int flag = 1;
+	int number;
+	Pointer p;
+	printf("请输入要修改数据的编号：");
+	scanf_s("%d", &number);
+	p = head;
+	while (p != NULL && flag)
+	{
+		if (p->number == number)
+		{
+			printf("请输入人数：");
+			scanf_s("%d", p->sum);
+			printf("请输入预定时间：");
+			scanf_s("%s", p->time);
+			flag = 0;
+		}
+		else
+			p = p->next;
+	}
+	if (flag)
+		printf("未找到要修改数据的编号！\n");
+}
+void Delete(Pointer *head)
+{
+	int flag = 1;
+	int number;
+	Pointer p, q;  // p指向当前结点，q指向上一结点
+	printf("请输入要删除数据的编号：");
+	scanf_s("%d", &number);
+	p = q = *head;
+	while (p != NULL && flag)
+	{
+		if (p->number == number)
+		{
+			if (p == *head)
+			{
+				*head = p->next;
+				free(p);
+			}
+			else
+			{
+				q->next = p->next;
+				free(p);
+			}
+			flag = 0;
+			count--;
+		}
+		else
+		{
+			q = p;
+			p = p->next;
+		}
+	}
+	if (flag)
+		printf("未找到要删除数据的编号！\n");
+}
+void Show(Pointer head) 
+{
+	Pointer p;
+	p = head;
+	while (p != NULL)
+	{
+		printf("姓名：%-10s", p->name);
+		printf("人数：%-10d", p->sum);
+		printf("预定时间：%-10s", p->time);
+		printf("编号：%-10d", p->number);
+		p = p->next;
+	}
+}
+
+int main()
+{
+	FILE* fp;
+	errno_t err;
+	int i;
+	List guest[SIZE];
+	Pointer head = NULL, p;
+	if ((err = fopen_s(&fp, "D:\\guestlist.dat", "wb+")) != 0)
+	{
+		printf("打开文件失败！\n");
+		exit(0);
+	}
+	do 
+	{
+		printf("1.insert  2.search 3.update 4.delete 5.show 0.exit");
+		printf("请输入想要执行的功能：");
+		scanf_s("%d", &i);
+		switch (i)
+		{
+		case 1:Insert(&head);
+			break;
+		case 2:Search(head);
+			break;
+		case 3:Update(head);
+			break;
+		case 4:Delete(&head);
+			break;
+		case 5:Show(head);
+			break;
+		case 0:break;
+		default:
+			printf("输入错误，请重新输入！\n");
+			break;
+		}
+	} while (i != 0);
+	if ((fwrite(guest, sizeof(List), count, fp)) != count)
+	{
+		printf("文件写入失败！\n");
+	}
+	fclose(fp);
+	return 0;
+}
